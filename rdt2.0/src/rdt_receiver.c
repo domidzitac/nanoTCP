@@ -3,7 +3,6 @@
  * Nabil Rahiman
  * email: nr83@nyu.edu
  */
-
  #include <stdio.h>
  #include <unistd.h>
  #include <stdlib.h>
@@ -18,16 +17,9 @@
  #include "common.h"
  #include "packet.h"
 
-
- /*
-  * You ar required to change the implementation to support
-  * window size greater than one.
-  * In the currenlt implemenetation window size is one, hence we have
-  * onlyt one send and receive packet
-  */
  tcp_packet *recvpkt;
  tcp_packet *sndpkt;
-
+/* This window size should be handshaked with the server */
  int window_size = 10;
 
  int main(int argc, char **argv) {
@@ -37,27 +29,21 @@
      struct sockaddr_in serveraddr; /* server's addr */
      struct sockaddr_in clientaddr; /* client addr */
      int optval; /* flag value for setsockopt */
-     FILE *fp;
+     FILE *fp; /* fp of file to write to */
      char buffer[MSS_SIZE];
      struct timeval tp;
 
-     /*
-      * check command line arguments
-      */
      if (argc != 3) {
          fprintf(stderr, "usage: %s <port> FILE_RECVD\n", argv[0]);
          exit(1);
      }
      portno = atoi(argv[1]);
-
      fp  = fopen(argv[2], "w");
      if (fp == NULL) {
          error(argv[2]);
      }
 
-     /*
-      * socket: create the parent socket
-      */
+     /* socket: create the parent socket */
      sockfd = socket(AF_INET, SOCK_DGRAM, 0);
      if (sockfd < 0)
          error("ERROR opening socket");
@@ -90,34 +76,29 @@
       * main loop: wait for a datagram, then echo it
       */
      VLOG(DEBUG, "epoch time, bytes received, sequence number");
+     /* Window is a circular queue*/
      int* window = (int*)malloc(sizeof(int)*window_size);
      int i;
-     for (i = 0; i < window_size; i ++) window[i] = 0;
-     int window_start = 0;
+     for (i = 0; i < window_size; i ++) window[i] = 0; //Initialize
+     int window_start = 0; //Head of our queue. "Window"
      clientlen = sizeof(clientaddr);
-     int last_ack = 0;
+     int last_ack = 0; //Lask acked packet we need to send back
      while (1) {
-         /*
-          * recvfrom: receive a UDP datagram from a client
-          */
-         //VLOG(DEBUG, "waiting from server \n");
          if (recvfrom(sockfd, buffer, MSS_SIZE, 0,
                  (struct sockaddr *) &clientaddr, (socklen_t *)&clientlen) < 0) {
              error("ERROR in recvfrom");
          }
          recvpkt = (tcp_packet *) buffer;
          assert(get_data_size(recvpkt) <= DATA_SIZE);
-         if ( recvpkt->hdr.data_size == 0) {
+         if ( recvpkt->hdr.data_size == 0) { //Terminating condition
              VLOG(INFO, "End Of File has been reached");
-             //fclose(fp);
+             fclose(fp);
              break;
          }
-         /*
-          * sendto: ACK back to the client
-          */
          gettimeofday(&tp, NULL);
          VLOG(DEBUG, "%lu, %d, %d", tp.tv_sec, recvpkt->hdr.data_size, recvpkt->hdr.seqno);
 
+         //
          int now = fseek(fp, recvpkt->hdr.seqno - recvpkt->hdr.data_size, SEEK_SET);
          fwrite(recvpkt->data, 1, recvpkt->hdr.data_size, fp); //Writes packet data into fp.
          sndpkt = make_packet(0);
