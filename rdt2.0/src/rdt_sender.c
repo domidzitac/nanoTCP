@@ -198,57 +198,6 @@ int main (int argc, char **argv)
 				break;
 			}
 		}
-       // len = fread(buffer, 1, DATA_SIZE, fp);
-       // if ( len <= 0)
-       // {
-       //     VLOG(INFO, "End Of File has been reached");
-       //     sndpkt = make_packet(0);
-       //     sendto(sockfd, sndpkt, TCP_HDR_SIZE,  0,
-       //             (const struct sockaddr *)&serveraddr, serverlen);
-       //     break;
-       // }
-       // send_base = next_seqno;
-       // next_seqno = send_base + len;
-       // sndpkt = make_packet(len);
-       // memcpy(sndpkt->data, buffer, len);
-       // sndpkt->hdr.seqno = send_base;
-       //Wait for ACK
-       // do {
-
-       //     VLOG(DEBUG, "Sending packet %d to %s",
-       //             send_base, inet_ntoa(serveraddr.sin_addr));
-       //     /*
-       //      * If the sendto is called for the first time, the system will
-       //      * will assign a random port number so that server can send its
-       //      * response to the src port.
-       //      */
-       //     if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
-       //                 ( const struct sockaddr *)&serveraddr, serverlen) < 0)
-       //     {
-       //         error("sendto");
-       //     }
-
-       //     start_timer();
-       //     //ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,
-       //     //struct sockaddr *src_addr, socklen_t *addrlen);
-
-       //     if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
-       //                 (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0)
-       //     {
-       //         error("recvfrom");
-       //     }
-
-       //     //if ack > last _ needed _ack:
-
-
-       //     recvpkt = (tcp_packet *)buffer;
-       //     printf("%d \n", get_data_size(recvpkt));
-       //     assert(get_data_size(recvpkt) <= DATA_SIZE);
-       //     stop_timer();
-       //     /*resend pack if dont recv ack */
-       // } while(recvpkt->hdr.ackno != next_seqno);
-
-       // free(sndpkt);
    }
 
    return 0;
