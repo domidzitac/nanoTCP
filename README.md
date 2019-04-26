@@ -1,6 +1,13 @@
 # TCP-Jia-Komiljon
 A open-source TCP/IP implementation in C. Simulated using mininet
 
+Current functionality:
+  * Sending packets based on a fixed sending window size (WND size 10)
+  * Reciever sending cumulative acks to server.
+  * Moving the sending window and transmitting new packets on the sender
+  * Buffering out of order packets on the reciever end.
+  * Timeout mechanism on the server to re-send packets
+
 ---
 How to run mininet.
 
