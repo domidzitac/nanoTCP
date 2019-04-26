@@ -63,51 +63,47 @@ void stop_timer() {
 * delay: delay in milli seconds
 * sig_handler: signal handler function for resending unacknoledge packets
 */
-void init_timer(int delay, void (*sig_handler)(int))
-{
+void init_timer(int delay, void (*sig_handler)(int)) {
    signal(SIGALRM, resend_packets);
    timer.it_interval.tv_sec = delay / 1000;    // sets an interval of the timer
    timer.it_interval.tv_usec = (delay % 1000) * 1000;
    timer.it_value.tv_sec = delay / 1000;       // sets an initial value
    timer.it_value.tv_usec = (delay % 1000) * 1000;
-
    sigemptyset(&sigmask);
    sigaddset(&sigmask, SIGALRM);
 }
 
 /*
-read the packet byte next_seqno from our file and return sndpkt to be sent
+  * Creates a sndpkt given the index of the packet we need to send.
+  * Read the packet byte next_seqno from fp and save to sndpkt
+  * Populates the headers with the correct byte-level seqno
 */
 tcp_packet * make_send_packet(int index){
 	char buffer[DATA_SIZE]; //Buffer after reading packet number packet.
 	tcp_packet *sndpkt; //Create the packet.
-
 	fseek(fp, index * DATA_SIZE, SEEK_SET); //Seek to the correct position
-	size_t sz = fread(buffer, 1, DATA_SIZE, fp); //Read the next packet.
-	//printf("sz=%d\n",sz);
-   sndpkt = make_packet(sz);
-   memcpy(sndpkt->data, buffer, sz);
-   sndpkt->hdr.seqno = index * DATA_SIZE + sz;
+	size_t sz = fread(buffer, 1, DATA_SIZE, fp); //Read the data
+   sndpkt = make_packet(sz); //Create our packet
+   memcpy(sndpkt->data, buffer, sz); //Populate the data section with buffer
+   sndpkt->hdr.seqno = index * DATA_SIZE + sz; //Sets the seqno for reciever
    return(sndpkt);
 }
 
 
 /*
-  * Function to send a packet of sequence from start:end.
-  * If start == -1, then send terminating packet.
+  * Send a series of packets ranging from the start to end indexes.
+  * If start == -1 then send a terminating packet.
 */
 void send_packets(int start, int end){
-	// make sure end < max_size
-	if (start == -1){
+	if (start == -1) {
 		tcp_packet * sndpkt = make_packet(0);
 		if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
-                   ( const struct sockaddr *)&serveraddr, serverlen) < 0)
-       {
+                   ( const struct sockaddr *)&serveraddr, serverlen) < 0){
            error("sendto");
        }
        return;
 	}
-	int serverlen = sizeof(serveraddr);
+  // make sure end < max_size
 	if (end >= total_packets) end = total_packets - 1;
 	int i;
 	for (i = start; i <= end; i ++){
