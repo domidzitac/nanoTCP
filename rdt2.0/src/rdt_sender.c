@@ -137,19 +137,20 @@ int main (int argc, char **argv)
    hostname = argv[1];
    portno = atoi(argv[2]);
    fp = fopen(argv[3], "r");
+   /* Get the total size of our file */
    fseek(fp, 0L, SEEK_END);
-	long sz = ftell(fp);
-	total_packets = sz / DATA_SIZE;
-	if (sz % DATA_SIZE != 0) total_packets ++;
+   long sz = ftell(fp);
+   total_packets = sz / DATA_SIZE; //Get the packet number
+   if (sz % DATA_SIZE != 0) total_packets ++; //Increment if we have partial pkt
    if (fp == NULL) {
        error(argv[3]);
    }
 
    /* socket: create the socket */
    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-   if (sockfd < 0)
-       error("ERROR opening socket");
-
+   if (sockfd < 0){
+     error("ERROR opening socket");
+   }
 
    /* initialize server server details */
    bzero((char *) &serveraddr, sizeof(serveraddr));
@@ -164,31 +165,26 @@ int main (int argc, char **argv)
    /* build the server's Internet address */
    serveraddr.sin_family = AF_INET;
    serveraddr.sin_port = htons(portno);
-
    assert(MSS_SIZE - TCP_HDR_SIZE > 0);
-
-   //Stop and wait protocol
 
    init_timer(RETRY, resend_packets);
    send_packets(0, window_size-1);
    start_timer();
-   while (1)
-   {
+   while (1){
        if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
-           (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0)
-		{
+           (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0){
 		    error("recvfrom");
 		}
 		recvpkt = (tcp_packet *)buffer;
 		int ackno = recvpkt->hdr.ackno;
-		//if (recvpkt->hdr.ackno % DATA_SIZE != 0) ackno ++;
 		printf("total=%d ackno=%d lastack=%d\n",total_packets, ackno, last_ack);
-		if (ackno > last_ack){
+		if (ackno > last_ack){ //If the recieved ack number is larger than our send_base
+      /* Transmit new packets between our old head and updated head*/
 			send_packets(last_ack+window_size,ackno+window_size-1);
 			stop_timer();
 			start_timer();
-			last_ack = ackno;
-			if (ackno >= total_packets){
+			last_ack = ackno; //Update our send_base and hence our window location
+			if (ackno >= total_packets){ //We have reached the end. Send terminating packet
 				send_packets(-1,-1);
 				printf("Completed transfer\n");
 				break;
