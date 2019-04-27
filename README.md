@@ -29,3 +29,5 @@ Verifying checksum of the two files
 `cksum FILE_RCVD small_file.bin`
 
 ---
+
+TODO: Congestion control and flow control.
