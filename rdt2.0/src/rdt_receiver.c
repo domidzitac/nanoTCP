@@ -13,6 +13,7 @@
  #include <arpa/inet.h>
  #include <sys/time.h>
  #include <assert.h>
+ #include <time.h>
 
  #include "common.h"
  #include "packet.h"
@@ -20,7 +21,7 @@
  tcp_packet *recvpkt;
  tcp_packet *sndpkt;
 /* This window size should be handshaked with the server */
- int window_size = 10;
+ int window_size = 1000000;
 
  int main(int argc, char **argv) {
      int sockfd; /* socket */
@@ -83,6 +84,7 @@
      int window_start = 0; //Head of our queue. "Window"
      clientlen = sizeof(clientaddr);
      int last_ack = 0; //Lask acked packet we need to send back
+     //clock_t start = clock();
      while (1) {
          if (recvfrom(sockfd, buffer, MSS_SIZE, 0,
                  (struct sockaddr *) &clientaddr, (socklen_t *)&clientlen) < 0) {
@@ -96,7 +98,12 @@
              break;
          }
          gettimeofday(&tp, NULL);
-         VLOG(DEBUG, "%lu, %d, %d", tp.tv_sec, recvpkt->hdr.data_size, recvpkt->hdr.seqno);
+         double time = tp.tv_sec+(tp.tv_usec/1000000.0);
+         long ltime = tp.tv_sec*1000000+tp.tv_usec;
+         VLOG(DEBUG, "time %lf, %d, %d SEP %ld\n", time, tp.tv_sec, (int)tp.tv_usec, ltime);
+        // VLOG(DEBUG, "%lu %lu %lu", start, clock(), CLOCKS_PER_SEC);
+         //double tt = ((double)(clock() - start)) / CLOCKS_PER_SEC;
+         VLOG(DEBUG, "%lu, %d, %d", (long)time, recvpkt->hdr.data_size, recvpkt->hdr.seqno);
 
          sndpkt = make_packet(0);
          int ackno = (recvpkt->hdr.seqno) / DATA_SIZE; //Get the number of the segment

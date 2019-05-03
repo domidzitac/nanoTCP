@@ -15,20 +15,43 @@
 #include <sys/time.h>
 #include <time.h>
 #include <assert.h>
+#include <math.h>
 
 #include"packet.h"
 #include"common.h"
 
 #define STDIN_FD    0
 #define RETRY  400 //milli second
+#define SLOW_START 0
+#define CONGESTION_AVOIDANCE 1 
+int max_int(int a, int b){
+  if(a>b){
+    return a;
+  }
+  else {
+    return b;
+  }
+}
+
+double max_double(double a, double b){
+  if(a>b){
+    return a;
+  }
+  else {
+    return b;
+  }
+}
 
 /* Shared variables between functions*/
-int window_size = 10;
+double window_size = 1;
 int last_ack = 0; //The number of the last acked segment
 int duplicate_ack = 0; //Number of duplicate acks recieved.
 int sockfd; //Socket of the reciever
 int serverlen; // Size of serveraddr
+int mode = SLOW_START;
+int last_sent=-1;
 int total_packets; //The total number of packets that will be sent
+double ssthresh = 64;
 FILE *fp; //FP of our file
 struct sockaddr_in serveraddr; //Server address
 struct itimerval timer; //Timer for our timeouts.
@@ -36,19 +59,30 @@ tcp_packet *sndpkt; //The packet we send
 tcp_packet *recvpkt; //The packet we recieve
 sigset_t sigmask; //Timeout signals
 
-void send_packets(int start, int end);
+void send_packets();
+void send_packets_end(int start, int end);
 tcp_packet * make_send_packet(int index);
 void start_timer();
+void stop_timer();
 void resend_packets(int sig);
 
 /* Resent packets between last_ack and our windowsize */
 void resend_packets(int sig) {
+  //NEED TO CHANGE EVERything
    if (sig == SIGALRM) {
-    VLOG(INFO, "Timout happened sending %d to %d", last_ack, last_ack+window_size-1);
-		send_packets(last_ack, last_ack+window_size-1);
+    ssthresh=max_double(window_size/2,2.0);
+    window_size=1;
+    duplicate_ack=0;
+    VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,last_sent+(int) floor(window_size));
+    last_sent = last_ack - 1;
+		send_packets();
+    stop_timer();
 		start_timer();
+    mode=SLOW_START;
    }
 }
+
+
 
 void start_timer() {
    sigprocmask(SIG_UNBLOCK, &sigmask, NULL);
@@ -87,15 +121,23 @@ tcp_packet * make_send_packet(int index){
    sndpkt = make_packet(sz); //Create our packet
    memcpy(sndpkt->data, buffer, sz); //Populate the data section with buffer
    sndpkt->hdr.seqno = index * DATA_SIZE; //Sets the seqno for reciever
-   return(sndpkt);
+   
+  last_sent=max_int(last_sent,index);
+  
+  return(sndpkt);
 }
+
+void send_packets(){
+  send_packets_end(last_sent+1,last_sent+(int)floor(window_size));
+}
+
 
 
 /*
   * Send a series of packets ranging from the start to end indexes.
   * If start == -1 then send a terminating packet.
 */
-void send_packets(int start, int end){
+void send_packets_end(int start, int end){
 	if (start == -1) {
 		tcp_packet * sndpkt = make_packet(0);
 		if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
@@ -126,6 +168,7 @@ void send_packets(int start, int end){
 
 int main (int argc, char **argv)
 {
+    printf("Break1\n");
    int portno;
    char *hostname;
    char buffer[DATA_SIZE];
@@ -168,6 +211,7 @@ int main (int argc, char **argv)
        fprintf(stderr,"ERROR, invalid host %s\n", hostname);
        exit(0);
    }
+   printf("Break2\n");
 
    /* build the server's Internet address */
    serveraddr.sin_family = AF_INET;
@@ -175,41 +219,60 @@ int main (int argc, char **argv)
    assert(MSS_SIZE - TCP_HDR_SIZE > 0);
 
    init_timer(RETRY, resend_packets);
-   send_packets(0, window_size-1);
+   printf("Break3\n");
+   send_packets();
+   printf("Break4\n");
    start_timer();
    while (1){
-       if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
-           (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0){
-		    error("recvfrom");
+     if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
+         (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0){
+	    error("recvfrom");
 		}
 		recvpkt = (tcp_packet *)buffer;
 		int ackno = recvpkt->hdr.ackno;
 		printf("total=%d ackno=%d lastack=%d\n",total_packets, ackno, last_ack);
 
-
 		if (ackno > last_ack){ //If the recieved ack number is larger than our last_ack
-			duplicate_ack = 0;
-      		/* Transmit new packets between our old head and updated head*/
-			send_packets(last_ack+window_size,ackno+window_size-1);
+      if (mode==SLOW_START){
+        window_size+=(ackno-last_ack);
+        if(window_size>=ssthresh){
+          mode=CONGESTION_AVOIDANCE;
+        }
+      }
+      else {
+        window_size+=(ackno-last_ack)/window_size;
+      }
+			duplicate_ack=0;
+      /* Transmit new packets between our old head and updated head*/
+      send_packets();
 			stop_timer();
 			start_timer();
 			last_ack = ackno; //Update our send_base and hence our window location
+      last_sent = max_int(last_sent, last_ack - 1);
+      printf("ackno %d total_packets %d\n", ackno, total_packets);
 			if (ackno >= total_packets){ //We have reached the end. Send terminating packet
-				send_packets(-1,-1);
+				send_packets_end(-1,-1);
 				printf("Completed transfer\n");
 				break;
 			}
 		} 
-		// else {
-		// 	//We recieved a duplicate ack
-		// 	duplicate_ack ++;
-		// 	//If this packet is the third duplicate ack
-		// 	if (duplicate_ack >= 3){
-		// 		//window_size = 1; //
-		// 		send_packets(last_ack,last_ack+1);
-		// 		duplicate_ack = 0;
-		// 	}
-		// }
+		else if (ackno==last_ack){
+        duplicate_ack ++;
+        if (duplicate_ack >= 3){
+          ssthresh=max_double(window_size/2,2);
+          window_size = 1;
+          last_sent = last_ack - 1;
+          send_packets();
+          stop_timer();
+          start_timer();
+          duplicate_ack = 0;
+          mode=SLOW_START;
+        }
+			}
+      
+      //If this packet is the third duplicate ack
+     
+		
    }
 
    return 0;

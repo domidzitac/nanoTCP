@@ -114,6 +114,8 @@ for line in traceDL:
         timeDL.append(float(startTime)-stime)
         bytes = 0
         startTime = line.split(",")[0]
+print(timeDL)
+print(throughputDL)
 plt.plot(timeDL, throughputDL, lw=2, color='r')
 
 plt.ylabel("Throughput (Mbps)")
