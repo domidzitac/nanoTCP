@@ -99,7 +99,7 @@
          VLOG(DEBUG, "%lu, %d, %d", tp.tv_sec, recvpkt->hdr.data_size, recvpkt->hdr.seqno);
 
          sndpkt = make_packet(0);
-         int ackno = (recvpkt->hdr.seqno - recvpkt->hdr.data_size) / DATA_SIZE; //Get the number of the segment
+         int ackno = (recvpkt->hdr.seqno) / DATA_SIZE; //Get the number of the segment
          if (ackno >= last_ack){
            /* We recieved some packets out of order. We can remember we saved it.
             Queuesize circular is used because we don't recieve packets out of our window*/
@@ -107,7 +107,7 @@
              if (window[index] == 0){
                 window[index] = 1;
                  //Write to the position of the packet we recieved
-                 fseek(fp, recvpkt->hdr.seqno - recvpkt->hdr.data_size, SEEK_SET);
+                 fseek(fp, recvpkt->hdr.seqno, SEEK_SET);
                  fwrite(recvpkt->data, 1, recvpkt->hdr.data_size, fp); //Writes packet data into fp.
              }
              int inc = 0;

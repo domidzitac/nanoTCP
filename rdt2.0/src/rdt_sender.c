@@ -85,7 +85,7 @@ tcp_packet * make_send_packet(int index){
 	size_t sz = fread(buffer, 1, DATA_SIZE, fp); //Read the data
    sndpkt = make_packet(sz); //Create our packet
    memcpy(sndpkt->data, buffer, sz); //Populate the data section with buffer
-   sndpkt->hdr.seqno = index * DATA_SIZE + sz; //Sets the seqno for reciever
+   sndpkt->hdr.seqno = index * DATA_SIZE; //Sets the seqno for reciever
    return(sndpkt);
 }
 
