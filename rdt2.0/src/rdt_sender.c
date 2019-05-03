@@ -141,6 +141,12 @@ int main (int argc, char **argv)
    fseek(fp, 0L, SEEK_END);
    long sz = ftell(fp);
    total_packets = sz / DATA_SIZE; //Get the packet number
+
+   if (total_packets == 0) {
+   	printf("File is empty\n");
+   	exit(0);
+   }
+
    if (sz % DATA_SIZE != 0) total_packets ++; //Increment if we have partial pkt
    if (fp == NULL) {
        error(argv[3]);
