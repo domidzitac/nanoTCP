@@ -1,0 +1,26 @@
+Interface router-eth0 has index 2
+Interface router-eth1 has index 3
+Initialized ./DL_2_16Mbps queue with 249516 services.
+Initialized DL_2_16Mbps queue with 249516 services.
+uplink 0 0 / 1209000 = 0.0 % 0 
+downlink 0 0 / 1210500 = 0.0 % 0 
+uplink 1 8742 / 1539000 = 0.6 % 8742 
+downlink 1 227142 / 1537500 = 14.8 % 234712 
+uplink 2 6090 / 1540500 = 0.4 % 6090 
+downlink 2 189250 / 1540500 = 12.3 % 181680 
+uplink 3 0 / 1536000 = 0.0 % 0 
+downlink 3 30280 / 1536000 = 2.0 % 30280 
+uplink 4 0 / 1227000 = 0.0 % 0 
+downlink 4 45420 / 1227000 = 3.7 % 45420 
+uplink 5 0 / 1164000 = 0.0 % 0 
+downlink 5 30280 / 1164000 = 2.6 % 30280 
+uplink 6 42 / 1074000 = 0.0 % 42 
+downlink 6 45462 / 1074000 = 4.2 % 45462 
+uplink 7 0 / 1077000 = 0.0 % 0 
+downlink 7 30280 / 1077000 = 2.8 % 30280 
+uplink 8 0 / 412500 = 0.0 % 0 
+downlink 8 16654 / 411014 = 4.1 % 45420 
+uplink 9 0 / 742500 = 0.0 % 0 
+downlink 9 59046 / 743986 = 7.9 % 30280 
+uplink 10 0 / 825000 = 0.0 % 0 
+downlink 10 43906 / 823626 = 5.3 % 45420 

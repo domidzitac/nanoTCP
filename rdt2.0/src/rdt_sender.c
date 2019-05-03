@@ -25,6 +25,7 @@
 /* Shared variables between functions*/
 int window_size = 10;
 int last_ack = 0; //The number of the last acked segment
+int duplicate_ack = 0; //Number of duplicate acks recieved.
 int sockfd; //Socket of the reciever
 int serverlen; // Size of serveraddr
 int total_packets; //The total number of packets that will be sent
@@ -184,8 +185,11 @@ int main (int argc, char **argv)
 		recvpkt = (tcp_packet *)buffer;
 		int ackno = recvpkt->hdr.ackno;
 		printf("total=%d ackno=%d lastack=%d\n",total_packets, ackno, last_ack);
-		if (ackno > last_ack){ //If the recieved ack number is larger than our send_base
-      /* Transmit new packets between our old head and updated head*/
+
+
+		if (ackno > last_ack){ //If the recieved ack number is larger than our last_ack
+			duplicate_ack = 0;
+      		/* Transmit new packets between our old head and updated head*/
 			send_packets(last_ack+window_size,ackno+window_size-1);
 			stop_timer();
 			start_timer();
@@ -195,7 +199,17 @@ int main (int argc, char **argv)
 				printf("Completed transfer\n");
 				break;
 			}
-		}
+		} 
+		// else {
+		// 	//We recieved a duplicate ack
+		// 	duplicate_ack ++;
+		// 	//If this packet is the third duplicate ack
+		// 	if (duplicate_ack >= 3){
+		// 		//window_size = 1; //
+		// 		send_packets(last_ack,last_ack+1);
+		// 		duplicate_ack = 0;
+		// 	}
+		// }
    }
 
    return 0;
