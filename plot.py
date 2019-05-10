@@ -107,19 +107,21 @@ startTime = traceDL.readline().strip().split(",")[0]
 stime=float(startTime)
 
 for line in traceDL:
-    if (float(line.strip().split(",")[0]) - float(startTime)) <= 1.0:
+    if (float(line.strip().split(",")[0]) - float(startTime)) <= 0.25:
         bytes += float(line.strip().split(",")[1])
     else:
         throughputDL.append(bytes*8/1000000.0)
         timeDL.append(float(startTime)-stime)
         bytes = 0
         startTime = line.split(",")[0]
+throughputDL.append(bytes*8/1000000.0)
+timeDL.append(float(startTime)-stime)
 print(timeDL)
 print(throughputDL)
 plt.plot(timeDL, throughputDL, lw=2, color='r')
 
 plt.ylabel("Throughput (Mbps)")
 plt.xlabel("Time (s)")
-plt.xlim([0,10])
+plt.xlim([0,50])
 plt.grid(True, which="both")
 plt.savefig(args.dir+'/throughput.pdf',dpi=1000,bbox_inches='tight')

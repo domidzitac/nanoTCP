@@ -123,7 +123,7 @@ def RunTest(net):
 	h2.cmd('./cellsim/sender/cellsim1 ./'+ str(args.trace) + ' ' + str(args.trace) +' 00:00:00:00:00:01 '+str(args.loss)+' router-eth0 router-eth1  2> c1 &')
 	sleep(1)
 
-	h3.cmd("./rdt2.0/obj/rdt_sender 10.0.0.1 60001 small_file.bin 2> "+args.dir+"/"+args.name+"_sender.csv &")
+	h3.cmd("./rdt2.0/obj/rdt_sender 10.0.0.1 60001 output.dat 2> "+args.dir+"/"+args.name+"_sender.csv &")
 	# CLI (net)		
 
 	sleep(args.time)

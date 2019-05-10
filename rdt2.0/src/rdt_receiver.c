@@ -76,7 +76,7 @@
      /*
       * main loop: wait for a datagram, then echo it
       */
-     VLOG(DEBUG, "epoch time, bytes received, sequence number");
+     //VLOG(DEBUG, "epoch time, bytes received, sequence number");
      /* Window is a circular queue that remembers buffered recieved packets (out of order)*/
      int* window = (int*)malloc(sizeof(int)*window_size);
      int i;
@@ -93,14 +93,14 @@
          recvpkt = (tcp_packet *) buffer;
          assert(get_data_size(recvpkt) <= DATA_SIZE);
          if ( recvpkt->hdr.data_size == 0) { //Terminating condition
-             VLOG(INFO, "End Of File has been reached");
+             //VLOG(INFO, "End Of File has been reached");
              fclose(fp);
              break;
          }
          gettimeofday(&tp, NULL);
          double time = tp.tv_sec+(tp.tv_usec/1000000.0);
          long ltime = tp.tv_sec*1000000+tp.tv_usec;
-         VLOG(DEBUG, "time %lf, %d, %d SEP %ld\n", time, tp.tv_sec, (int)tp.tv_usec, ltime);
+         //VLOG(DEBUG, "time %lf, %d, %d SEP %ld\n", time, tp.tv_sec, (int)tp.tv_usec, ltime);
         // VLOG(DEBUG, "%lu %lu %lu", start, clock(), CLOCKS_PER_SEC);
          //double tt = ((double)(clock() - start)) / CLOCKS_PER_SEC;
          VLOG(DEBUG, "%lu, %d, %d", (long)time, recvpkt->hdr.data_size, recvpkt->hdr.seqno);
@@ -115,20 +115,31 @@
                 window[index] = 1;
                  //Write to the position of the packet we recieved
                  fseek(fp, recvpkt->hdr.seqno, SEEK_SET);
-                 fwrite(recvpkt->data, 1, recvpkt->hdr.data_size, fp); //Writes packet data into fp.
+                 size_t sz = fwrite(recvpkt->data, 1, recvpkt->hdr.data_size, fp); //Writes packet data into fp.
+                 fflush(fp);
+                 //VLOG(DEBUG, "WROTE AT %d FOR %d with pkt %d (success %d)", recvpkt->hdr.seqno, recvpkt->hdr.data_size, ackno, sz);
              }
              int inc = 0;
-             printf("last_ack=%d ackno=%d index=%d window_start=%d\n", last_ack, ackno, index, window_start);
+             //VLOG(DEBUG, "last_ack=%d ackno=%d index=%d window_start=%d\n", last_ack, ackno, index, window_start);
              while (window[window_start] == 1){ //Check if we have buffered packets
                  window[window_start] = 0;
                  window_start = (window_start + 1) % window_size;
                  inc ++; //This is the number of "buffered packet"
              }
-             printf("After window_start=%d inc=%d\n", window_start, inc);
+             //VLOG(DEBUG, "After window_start=%d inc=%d\n", window_start, inc);
              last_ack = last_ack + inc; //Send back the ack of cumulative packets we have already
          }
          sndpkt->hdr.ackno = last_ack;
          sndpkt->hdr.ctr_flags = ACK; //This is a ack response
+
+        gettimeofday(&tp, NULL);
+         time = tp.tv_sec+(tp.tv_usec/1000000.0);
+         ltime = tp.tv_sec*1000000+tp.tv_usec;
+         //VLOG(DEBUG, "time %lf, %d, %d SEP %ld\n", time, tp.tv_sec, (int)tp.tv_usec, ltime);
+        // VLOG(DEBUG, "%lu %lu %lu", start, clock(), CLOCKS_PER_SEC);
+         //double tt = ((double)(clock() - start)) / CLOCKS_PER_SEC;
+         //VLOG(DEBUG, "SENDING ACK AT %lu for pkt %d", (long)time, last_ack);
+
          if (sendto(sockfd, sndpkt, TCP_HDR_SIZE, 0,
                  (struct sockaddr *) &clientaddr, clientlen) < 0) {
              error("ERROR in sendto");

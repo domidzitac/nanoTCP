@@ -73,11 +73,10 @@ void resend_packets(int sig) {
     ssthresh=max_double(window_size/2,2.0);
     window_size=1;
     duplicate_ack=0;
-    VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,last_sent+(int) floor(window_size));
-    last_sent = last_ack - 1;
+    VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,last_ack+(int)floor(window_size)-1);
 		send_packets();
-    stop_timer();
-		start_timer();
+		//start_timer();
+    last_sent = last_ack - 1;
     mode=SLOW_START;
    }
 }
@@ -128,7 +127,7 @@ tcp_packet * make_send_packet(int index){
 }
 
 void send_packets(){
-  send_packets_end(last_sent+1,last_sent+(int)floor(window_size));
+  send_packets_end(last_sent+1,last_ack+(int)floor(window_size)-1);
 }
 
 
@@ -140,6 +139,7 @@ void send_packets(){
 void send_packets_end(int start, int end){
 	if (start == -1) {
 		tcp_packet * sndpkt = make_packet(0);
+    VLOG(DEBUG, "SENDING END PACKET WITH SZ %d and %d", get_data_size(sndpkt), TCP_HDR_SIZE + get_data_size(sndpkt));
 		if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
                    ( const struct sockaddr *)&serveraddr, serverlen) < 0){
            error("sendto");
@@ -157,6 +157,11 @@ void send_packets_end(int start, int end){
         * will assign a random port number so that server can send its
         * response to the src port.
         */
+            struct timeval tp;
+             gettimeofday(&tp, NULL);
+         double time = tp.tv_sec+(tp.tv_usec/1000000.0);
+         long ltime = tp.tv_sec*1000000+tp.tv_usec;
+         VLOG(DEBUG, "SENDING %lf at pkt %d", time, i);
        if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
                    ( const struct sockaddr *)&serveraddr, serverlen) < 0)
        {
@@ -224,15 +229,20 @@ int main (int argc, char **argv)
    printf("Break4\n");
    start_timer();
    while (1){
+    VLOG(DEBUG, "START WAITING TO RECEIVE");
      if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
          (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0){
 	    error("recvfrom");
 		}
+    VLOG(DEBUG, "FINISH WAITING");
+    stop_timer();
 		recvpkt = (tcp_packet *)buffer;
 		int ackno = recvpkt->hdr.ackno;
-		printf("total=%d ackno=%d lastack=%d\n",total_packets, ackno, last_ack);
+    VLOG(DEBUG, "windowsize=%f ssthresh=%f\n", window_size, ssthresh);
+		VLOG(DEBUG, "total=%d ackno=%d lastack=%d\n",total_packets, ackno, last_ack);
 
 		if (ackno > last_ack){ //If the recieved ack number is larger than our last_ack
+      VLOG(DEBUG, "IN ACKNO >");
       if (mode==SLOW_START){
         window_size+=(ackno-last_ack);
         if(window_size>=ssthresh){
@@ -244,34 +254,39 @@ int main (int argc, char **argv)
       }
 			duplicate_ack=0;
       /* Transmit new packets between our old head and updated head*/
-      send_packets();
-			stop_timer();
-			start_timer();
 			last_ack = ackno; //Update our send_base and hence our window location
       last_sent = max_int(last_sent, last_ack - 1);
-      printf("ackno %d total_packets %d\n", ackno, total_packets);
+            //VLOG(DEBUG, "BEF SENDPKT");
+      send_packets();
+      //VLOG(DEBUG, "AFT SENDPKT >");
+
+      start_timer();
+      //VLOG(DEBUG, "AFT START_TIMER>");
+
+      //printf("ackno %d total_packets %d\n", ackno, total_packets); CURSED LINE
 			if (ackno >= total_packets){ //We have reached the end. Send terminating packet
 				send_packets_end(-1,-1);
-				printf("Completed transfer\n");
+				VLOG(DEBUG, "Completed transfer\n");
 				break;
 			}
+      //VLOG(DEBUG, "END OF ACK >"); // MAGIC LINE
 		} 
 		else if (ackno==last_ack){
+      VLOG(DEBUG, "IN ACKNO ==");
         duplicate_ack ++;
         if (duplicate_ack >= 3){
           ssthresh=max_double(window_size/2,2);
           window_size = 1;
           last_sent = last_ack - 1;
           send_packets();
-          stop_timer();
-          start_timer();
+          //start_timer();
           duplicate_ack = 0;
           mode=SLOW_START;
         }
 			}
       
       //If this packet is the third duplicate ack
-     
+     //VLOG(DEBUG, "AT WHILE END");
 		
    }
 

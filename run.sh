@@ -3,7 +3,7 @@
 # Note: Mininet must be run as root.  So invoke this shell script
 # using sudo.
 
-time=10
+time=50
 dir=output
 name=projectTest
 trace=DL_2_16Mbps
