@@ -59,17 +59,13 @@
      setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR,
              (const void *)&optval , sizeof(int));
 
-     /*
-      * build the server's Internet address
-      */
+     /* build the server's Internet address */
      bzero((char *) &serveraddr, sizeof(serveraddr));
      serveraddr.sin_family = AF_INET;
      serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
      serveraddr.sin_port = htons((unsigned short)portno);
 
-     /*
-      * bind: associate the parent socket with a port
-      */
+     /* bind: associate the parent socket with a port */
      if (bind(sockfd, (struct sockaddr *) &serveraddr,
                  sizeof(serveraddr)) < 0)
          error("ERROR on binding");
@@ -102,39 +98,32 @@
 
          sndpkt = make_packet(0);
          int ackno = (recvpkt->hdr.seqno) / DATA_SIZE; //Convert byte to int segment
-         if (ackno >= last_ack){
-           /* We recieved some packets out of order. We can remember we saved it.
-            Queuesize circular is used because we don't recieve packets out of our window*/
+         if (ackno >= last_ack){ //If we recieve new packet
+             /* If out of order, we jump (ackno - last_ack) steps into the circular buffer */
              int index = (window_start + (ackno - last_ack))% window_size;
+             /* If this packet has not been recieved before */
              if (window[index] == 0){
-                window[index] = 1;
-                 //Write to the position of the packet we recieved
-                 fseek(fp, recvpkt->hdr.seqno, SEEK_SET);
-                 size_t sz = fwrite(recvpkt->data, 1, recvpkt->hdr.data_size, fp); //Writes packet data into fp.
+                window[index] = 1; //It has now
+                 fseek(fp, recvpkt->hdr.seqno, SEEK_SET); //Write to the position of the packet we recieved
+                 fwrite(recvpkt->data, 1, recvpkt->hdr.data_size, fp); //Writes packet data into fp.
                  fflush(fp);
-                 //VLOG(DEBUG, "WROTE AT %d FOR %d with pkt %d (success %d)", recvpkt->hdr.seqno, recvpkt->hdr.data_size, ackno, sz);
              }
+             /* Seek our window_start if contiguous to lastPacketRcvd */
              int inc = 0;
-             //VLOG(DEBUG, "last_ack=%d ackno=%d index=%d window_start=%d\n", last_ack, ackno, index, window_start);
-             while (window[window_start] == 1){ //Check if we have buffered packets
+             while (window[window_start] == 1) { //Check if we have buffered packets
                  window[window_start] = 0;
                  window_start = (window_start + 1) % window_size;
                  inc ++; //This is the number of "buffered packet"
              }
-             //VLOG(DEBUG, "After window_start=%d inc=%d\n", window_start, inc);
              last_ack = last_ack + inc; //Send back the ack of cumulative packets we have already
          }
          sndpkt->hdr.ackno = last_ack;
          sndpkt->hdr.ctr_flags = ACK; //This is a ack response
-
-        gettimeofday(&tp, NULL);
-         time = tp.tv_sec+(tp.tv_usec/1000000.0);
-
+         /* Send the packet */
          if (sendto(sockfd, sndpkt, TCP_HDR_SIZE, 0,
                  (struct sockaddr *) &clientaddr, clientlen) < 0) {
              error("ERROR in sendto");
          }
      }
-
      return 0;
  }
