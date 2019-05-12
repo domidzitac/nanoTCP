@@ -45,7 +45,7 @@ def simpleRun():
 		os.makedirs(args.dir)
 
 	print ("Setting up Mininet")
-	
+
 	net = Mininet( topo=None,
 				   build=False,
 				   ipBase='10.0.0.0/8')
@@ -123,14 +123,14 @@ def RunTest(net):
 	h2.cmd('./cellsim/sender/cellsim1 ./'+ str(args.trace) + ' ' + str(args.trace) +' 00:00:00:00:00:01 '+str(args.loss)+' router-eth0 router-eth1  2> c1 &')
 	sleep(1)
 
-	h3.cmd("./rdt2.0/obj/rdt_sender 10.0.0.1 60001 output.dat 2> "+args.dir+"/"+args.name+"_sender.csv &")
-	# CLI (net)		
+	h3.cmd("./rdt2.0/obj/rdt_sender 10.0.0.1 60001 FILE 2> "+args.dir+"/"+args.name+"_sender.csv &")
+	# CLI (net)
 
 	sleep(args.time)
 
 	h3.cmd("ps | pgrep -f rdt_server | xargs kill -9")
 	h1.cmd("ps | pgrep -f rdt_sender | xargs kill -9")
 	h2.cmd("ps | pgrep -f cellsim1 | xargs kill -9")
-	
+
 if __name__ == '__main__':
 	simpleRun()

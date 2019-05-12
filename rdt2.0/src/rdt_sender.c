@@ -21,9 +21,9 @@
 #include"common.h"
 
 #define STDIN_FD    0
-#define RETRY  400 //milli second
-#define SLOW_START 0
-#define CONGESTION_AVOIDANCE 1 
+#define RETRY  400 //Retransmit timeout time
+#define SLOW_START 0 //Flag 0 = SLOW_START 1 = CONGESTION_AVOIDANCE
+#define CONGESTION_AVOIDANCE 1
 int max_int(int a, int b){
   if(a>b){
     return a;
@@ -44,12 +44,12 @@ double max_double(double a, double b){
 
 /* Shared variables between functions*/
 double window_size = 1;
-int last_ack = 0; //The number of the last acked segment
+int send_base = 0; //This is sendbase
 int duplicate_ack = 0; //Number of duplicate acks recieved.
 int sockfd; //Socket of the reciever
-int serverlen; // Size of serveraddr
+int serverlen; //Size of serveraddr
 int mode = SLOW_START;
-int last_sent=-1;
+int last_sent=-1; //The last send segment
 int total_packets; //The total number of packets that will be sent
 double ssthresh = 64;
 FILE *fp; //FP of our file
@@ -59,6 +59,7 @@ tcp_packet *sndpkt; //The packet we send
 tcp_packet *recvpkt; //The packet we recieve
 sigset_t sigmask; //Timeout signals
 
+//Function declarations
 void send_packets();
 void send_packets_end(int start, int end);
 tcp_packet * make_send_packet(int index);
@@ -66,21 +67,19 @@ void start_timer();
 void stop_timer();
 void resend_packets(int sig);
 
-/* Resent packets between last_ack and our windowsize */
+/* Resend packets between send_base and our windowsize */
 void resend_packets(int sig) {
-  //NEED TO CHANGE EVERything
-   if (sig == SIGALRM) {
-    ssthresh=max_double(window_size/2,2.0);
+   if (sig == SIGALRM) { //Timeout occurs
+    ssthresh=max_double(window_size/2,2.0); //ssthresh gets cut in half.
     window_size=1;
     duplicate_ack=0;
-    VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,last_ack+(int)floor(window_size)-1);
+    VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,send_base+(int)floor(window_size)-1);
 		send_packets();
 		//start_timer();
-    last_sent = last_ack - 1;
+    last_sent = send_base - 1;
     mode=SLOW_START;
    }
 }
-
 
 
 void start_timer() {
@@ -120,14 +119,14 @@ tcp_packet * make_send_packet(int index){
    sndpkt = make_packet(sz); //Create our packet
    memcpy(sndpkt->data, buffer, sz); //Populate the data section with buffer
    sndpkt->hdr.seqno = index * DATA_SIZE; //Sets the seqno for reciever
-   
+
   last_sent=max_int(last_sent,index);
-  
+
   return(sndpkt);
 }
 
 void send_packets(){
-  send_packets_end(last_sent+1,last_ack+(int)floor(window_size)-1);
+  send_packets_end(last_sent+1,send_base+(int)floor(window_size)-1);
 }
 
 
@@ -239,23 +238,23 @@ int main (int argc, char **argv)
 		recvpkt = (tcp_packet *)buffer;
 		int ackno = recvpkt->hdr.ackno;
     VLOG(DEBUG, "windowsize=%f ssthresh=%f\n", window_size, ssthresh);
-		VLOG(DEBUG, "total=%d ackno=%d lastack=%d\n",total_packets, ackno, last_ack);
+		VLOG(DEBUG, "total=%d ackno=%d lastack=%d\n",total_packets, ackno, send_base);
 
-		if (ackno > last_ack){ //If the recieved ack number is larger than our last_ack
+		if (ackno > send_base){ //If the recieved ack number is larger than our send_base
       VLOG(DEBUG, "IN ACKNO >");
       if (mode==SLOW_START){
-        window_size+=(ackno-last_ack);
+        window_size+=(ackno-send_base);
         if(window_size>=ssthresh){
           mode=CONGESTION_AVOIDANCE;
         }
       }
       else {
-        window_size+=(ackno-last_ack)/window_size;
+        window_size+=(ackno-send_base)/window_size;
       }
 			duplicate_ack=0;
       /* Transmit new packets between our old head and updated head*/
-			last_ack = ackno; //Update our send_base and hence our window location
-      last_sent = max_int(last_sent, last_ack - 1);
+			send_base = ackno; //Update our send_base and hence our window location
+      last_sent = max_int(last_sent, send_base - 1);
             //VLOG(DEBUG, "BEF SENDPKT");
       send_packets();
       //VLOG(DEBUG, "AFT SENDPKT >");
@@ -270,24 +269,24 @@ int main (int argc, char **argv)
 				break;
 			}
       //VLOG(DEBUG, "END OF ACK >"); // MAGIC LINE
-		} 
-		else if (ackno==last_ack){
+		}
+		else if (ackno==send_base){
       VLOG(DEBUG, "IN ACKNO ==");
         duplicate_ack ++;
         if (duplicate_ack >= 3){
           ssthresh=max_double(window_size/2,2);
           window_size = 1;
-          last_sent = last_ack - 1;
+          last_sent = send_base - 1;
           send_packets();
           //start_timer();
           duplicate_ack = 0;
           mode=SLOW_START;
         }
 			}
-      
+
       //If this packet is the third duplicate ack
      //VLOG(DEBUG, "AT WHILE END");
-		
+
    }
 
    return 0;

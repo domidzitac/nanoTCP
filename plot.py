@@ -122,6 +122,6 @@ plt.plot(timeDL, throughputDL, lw=2, color='r')
 
 plt.ylabel("Throughput (Mbps)")
 plt.xlabel("Time (s)")
-plt.xlim([0,50])
+plt.xlim([0,300])
 plt.grid(True, which="both")
 plt.savefig(args.dir+'/throughput.pdf',dpi=1000,bbox_inches='tight')

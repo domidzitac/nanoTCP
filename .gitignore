@@ -1,2 +1,5 @@
 output.dat
+FILE
 FILE_RCVD
+output/projectTest_receiver.csv
+output/projectTest_sender.csv
