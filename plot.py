@@ -112,16 +112,55 @@ for line in traceDL:
     else:
         throughputDL.append(bytes*8/1000000.0)
         timeDL.append(float(startTime)-stime)
-        bytes = 0
         startTime = line.split(",")[0]
+        bytes = 0
+
 throughputDL.append(bytes*8/1000000.0)
 timeDL.append(float(startTime)-stime)
-print(timeDL)
-print(throughputDL)
 plt.plot(timeDL, throughputDL, lw=2, color='r')
 
 plt.ylabel("Throughput (Mbps)")
 plt.xlabel("Time (s)")
-plt.xlim([0,300])
+plt.xlim([0,150])
 plt.grid(True, which="both")
 plt.savefig(args.dir+'/throughput.pdf',dpi=1000,bbox_inches='tight')
+
+# plotting CWND and SSTHRESH.
+CWND = []
+SSTHRESH = []
+timeDL = []
+
+traceDL = open (args.dir+"/"+str(args.name)+'_sender.csv', 'r')
+traceDL.readline()
+
+startTime = traceDL.readline().strip().split(",")[0]
+stime=float(startTime)
+
+for line in traceDL:
+    if (float(line.strip().split(",")[0]) - float(startTime)) <= 100:
+        pass
+    else:
+        CWND.append(float(line.strip().split(",")[1]))
+        SSTHRESH.append(float(line.strip().split(",")[2]))
+        timeDL.append(float(startTime)-stime)
+        startTime = line.split(",")[0]
+
+CWND.append(float(line.strip().split(",")[1]))
+SSTHRESH.append(float(line.strip().split(",")[2]))
+timeDL.append((float(startTime)-stime))
+
+plt.clf()
+plt.plot(timeDL, CWND, lw=2, color='r')
+plt.ylabel("CWND (No. of segments)")
+plt.xlabel("Time (ms)")
+plt.xlim([0,150000])
+plt.grid(True, which="both")
+plt.savefig(args.dir+'/cwnd.pdf',dpi=1000,bbox_inches='tight')
+
+plt.clf()
+plt.plot(timeDL, SSTHRESH, lw=2, color='r')
+plt.ylabel("SSTHRESH (No. of segments)")
+plt.xlabel("Time (ms)")
+plt.xlim([0,150000])
+plt.grid(True, which="both")
+plt.savefig(args.dir+'/ssthresh.pdf',dpi=1000,bbox_inches='tight')

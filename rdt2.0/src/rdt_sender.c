@@ -73,7 +73,7 @@ void resend_packets(int sig) {
     ssthresh=max_double(window_size/2,2.0); //ssthresh gets cut in half.
     window_size=1;
     duplicate_ack=0;
-    VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,send_base+(int)floor(window_size)-1);
+    //VLOG(INFO, "Timeout happened sending %d to %d",last_sent+1,send_base+(int)floor(window_size)-1);
 		send_packets();
 		//start_timer();
     last_sent = send_base - 1;
@@ -132,7 +132,6 @@ tcp_packet * make_send_packet(int index){
 void send_packets_end(int start, int end){
     if (start == -1) {
     	tcp_packet * sndpkt = make_packet(0);
-      VLOG(DEBUG, "SENDING END PACKET WITH SZ %d and %d", get_data_size(sndpkt), TCP_HDR_SIZE + get_data_size(sndpkt));
     	if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
                      ( const struct sockaddr *)&serveraddr, serverlen) < 0){
              error("sendto");
@@ -167,6 +166,7 @@ int main (int argc, char **argv) {
    int portno;
    char *hostname;
    char buffer[DATA_SIZE];
+   struct timeval tp; //For time tracking
 
    /* check command line arguments */
    if (argc != 4) {
@@ -225,8 +225,11 @@ int main (int argc, char **argv) {
     stop_timer();
 		recvpkt = (tcp_packet *)buffer; //Cast the read data into packet format
 		int ackno = recvpkt->hdr.ackno;
-    VLOG(DEBUG, "windowsize=%f ssthresh=%f\n", window_size, ssthresh);
-		VLOG(DEBUG, "total=%d ackno=%d lastack=%d\n",total_packets, ackno, send_base);
+
+    /* Log CWND and other stats */
+    gettimeofday(&tp, NULL);
+    long long time = tp.tv_sec*1000LL+(tp.tv_usec/1000.0);
+    VLOG(DEBUG, "%llu, %f, %f", time, window_size, ssthresh);
 
 		if (ackno > send_base){ //Cumulative recieved
       duplicate_ack=0; //It was not duplicate
@@ -250,7 +253,7 @@ int main (int argc, char **argv) {
       /* We have reached the end. Send terminating packet */
 			if (ackno >= total_packets){
 				send_packets_end(-1,-1);
-				VLOG(DEBUG, "Completed transfer\n");
+				//VLOG(DEBUG, "Completed transfer\n");
 				break;
 			}
       //VLOG(DEBUG, "END OF ACK >"); // MAGIC LINE
