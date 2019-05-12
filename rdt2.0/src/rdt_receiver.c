@@ -74,19 +74,16 @@
                  sizeof(serveraddr)) < 0)
          error("ERROR on binding");
 
-     /*
-      * main loop: wait for a datagram, then echo it
-      */
-     //VLOG(DEBUG, "epoch time, bytes received, sequence number");
      /* Window is a circular queue that remembers buffered recieved packets (out of order)*/
      int* window = (int*)malloc(sizeof(int)*window_size);
      int i;
      for (i = 0; i < window_size; i ++) window[i] = 0; //Initialize
      int window_start = 0; //Head of our queue. "Window"
-     clientlen = sizeof(clientaddr);
      int last_ack = 0; //Lask acked packet we need to send back
-     //clock_t start = clock();
+     clientlen = sizeof(clientaddr);
+
      while (1) {
+       /* Read from socket */
          if (recvfrom(sockfd, buffer, MSS_SIZE, 0,
                  (struct sockaddr *) &clientaddr, (socklen_t *)&clientlen) < 0) {
              error("ERROR in recvfrom");
@@ -94,20 +91,17 @@
          recvpkt = (tcp_packet *) buffer;
          assert(get_data_size(recvpkt) <= DATA_SIZE);
          if ( recvpkt->hdr.data_size == 0) { //Terminating condition
-             //VLOG(INFO, "End Of File has been reached");
              fclose(fp);
              break;
          }
+
+         /* Log time */
          gettimeofday(&tp, NULL);
          double time = tp.tv_sec+(tp.tv_usec/1000000.0);
-         long ltime = tp.tv_sec*1000000+tp.tv_usec;
-         //VLOG(DEBUG, "time %lf, %d, %d SEP %ld\n", time, tp.tv_sec, (int)tp.tv_usec, ltime);
-        // VLOG(DEBUG, "%lu %lu %lu", start, clock(), CLOCKS_PER_SEC);
-         //double tt = ((double)(clock() - start)) / CLOCKS_PER_SEC;
          VLOG(DEBUG, "%lu, %d, %d", (long)time, recvpkt->hdr.data_size, recvpkt->hdr.seqno);
 
          sndpkt = make_packet(0);
-         int ackno = (recvpkt->hdr.seqno) / DATA_SIZE; //Get the number of the segment
+         int ackno = (recvpkt->hdr.seqno) / DATA_SIZE; //Convert byte to int segment
          if (ackno >= last_ack){
            /* We recieved some packets out of order. We can remember we saved it.
             Queuesize circular is used because we don't recieve packets out of our window*/
@@ -135,11 +129,6 @@
 
         gettimeofday(&tp, NULL);
          time = tp.tv_sec+(tp.tv_usec/1000000.0);
-         ltime = tp.tv_sec*1000000+tp.tv_usec;
-         //VLOG(DEBUG, "time %lf, %d, %d SEP %ld\n", time, tp.tv_sec, (int)tp.tv_usec, ltime);
-        // VLOG(DEBUG, "%lu %lu %lu", start, clock(), CLOCKS_PER_SEC);
-         //double tt = ((double)(clock() - start)) / CLOCKS_PER_SEC;
-         //VLOG(DEBUG, "SENDING ACK AT %lu for pkt %d", (long)time, last_ack);
 
          if (sendto(sockfd, sndpkt, TCP_HDR_SIZE, 0,
                  (struct sockaddr *) &clientaddr, clientlen) < 0) {
