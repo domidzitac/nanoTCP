@@ -213,69 +213,59 @@ int main (int argc, char **argv) {
    assert(MSS_SIZE - TCP_HDR_SIZE > 0);
 
    init_timer(RETRY, resend_packets);
-   send_packets();
-   start_timer();
+   send_packets(); //Send first group of packets
+   start_timer(); //Wait for timeout
 
    while (1){
-    VLOG(DEBUG, "START WAITING TO RECEIVE");
+     //A packet is recieved
      if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
          (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0){
-	    error("recvfrom");
-		}
-    VLOG(DEBUG, "FINISH WAITING");
+      error("recvfrom");
+  	 }
     stop_timer();
-		recvpkt = (tcp_packet *)buffer;
+		recvpkt = (tcp_packet *)buffer; //Cast the read data into packet format
 		int ackno = recvpkt->hdr.ackno;
     VLOG(DEBUG, "windowsize=%f ssthresh=%f\n", window_size, ssthresh);
 		VLOG(DEBUG, "total=%d ackno=%d lastack=%d\n",total_packets, ackno, send_base);
 
-		if (ackno > send_base){ //If the recieved ack number is larger than our send_base
-      VLOG(DEBUG, "IN ACKNO >");
+		if (ackno > send_base){ //Cumulative recieved
+      duplicate_ack=0; //It was not duplicate
+      /* Transmit new packets between our old head and updated head*/
+      /* In slow start, window size increase 1 per segment acked */
       if (mode==SLOW_START){
         window_size+=(ackno-send_base);
         if(window_size>=ssthresh){
           mode=CONGESTION_AVOIDANCE;
         }
-      }
-      else {
+      } else {
+      /* avoidance mode, window size increase 1/windowsize per segment acked */
         window_size+=(ackno-send_base)/window_size;
       }
-			duplicate_ack=0;
-      /* Transmit new packets between our old head and updated head*/
-			send_base = ackno; //Update our send_base and hence our window location
-      last_sent = max_int(last_sent, send_base - 1);
-            //VLOG(DEBUG, "BEF SENDPKT");
+      /* Update our send_base*/
+			send_base = ackno;
+      last_sent = max_int(last_sent, send_base - 1); //Sanity check
       send_packets();
-      //VLOG(DEBUG, "AFT SENDPKT >");
-
       start_timer();
-      //VLOG(DEBUG, "AFT START_TIMER>");
 
-      //printf("ackno %d total_packets %d\n", ackno, total_packets); CURSED LINE
-			if (ackno >= total_packets){ //We have reached the end. Send terminating packet
+      /* We have reached the end. Send terminating packet */
+			if (ackno >= total_packets){
 				send_packets_end(-1,-1);
 				VLOG(DEBUG, "Completed transfer\n");
 				break;
 			}
       //VLOG(DEBUG, "END OF ACK >"); // MAGIC LINE
-		}
-		else if (ackno==send_base){
-      VLOG(DEBUG, "IN ACKNO ==");
+		} else if (ackno==send_base){
         duplicate_ack ++;
         if (duplicate_ack >= 3){
           ssthresh=max_double(window_size/2,2);
           window_size = 1;
-          last_sent = send_base - 1;
+          last_sent = send_base - 1; //We need to resend from our missing packet
           send_packets();
           //start_timer();
           duplicate_ack = 0;
           mode=SLOW_START;
         }
 			}
-
-      //If this packet is the third duplicate ack
-     //VLOG(DEBUG, "AT WHILE END");
-
    }
 
    return 0;

@@ -21,6 +21,7 @@
  tcp_packet *recvpkt;
  tcp_packet *sndpkt;
 /* This window size should be handshaked with the server */
+/* Advertised window */
  int window_size = 1000000;
 
  int main(int argc, char **argv) {
