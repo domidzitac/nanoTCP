@@ -109,7 +109,7 @@ void init_timer(int delay, void (*sig_handler)(int)) {
 /*
   * Creates a sndpkt given the index of the packet we need to send.
   * Read the packet byte next_seqno from fp and save to sndpkt
-  * Populates the headers with the correct byte-level seqno
+  * Populates the headers with the correct byte-level segment number
 */
 tcp_packet * make_send_packet(int index){
 	char buffer[DATA_SIZE]; //Buffer after reading packet number packet.
@@ -118,61 +118,52 @@ tcp_packet * make_send_packet(int index){
 	size_t sz = fread(buffer, 1, DATA_SIZE, fp); //Read the data
    sndpkt = make_packet(sz); //Create our packet
    memcpy(sndpkt->data, buffer, sz); //Populate the data section with buffer
-   sndpkt->hdr.seqno = index * DATA_SIZE; //Sets the seqno for reciever
+   sndpkt->hdr.seqno = index * DATA_SIZE; //Use byte-level sequence number
 
   last_sent=max_int(last_sent,index);
 
   return(sndpkt);
 }
 
-void send_packets(){
-  send_packets_end(last_sent+1,send_base+(int)floor(window_size)-1);
-}
-
-
-
 /*
   * Send a series of packets ranging from the start to end indexes.
   * If start == -1 then send a terminating packet.
 */
 void send_packets_end(int start, int end){
-	if (start == -1) {
-		tcp_packet * sndpkt = make_packet(0);
-    VLOG(DEBUG, "SENDING END PACKET WITH SZ %d and %d", get_data_size(sndpkt), TCP_HDR_SIZE + get_data_size(sndpkt));
-		if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
+    if (start == -1) {
+    	tcp_packet * sndpkt = make_packet(0);
+      VLOG(DEBUG, "SENDING END PACKET WITH SZ %d and %d", get_data_size(sndpkt), TCP_HDR_SIZE + get_data_size(sndpkt));
+    	if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
+                     ( const struct sockaddr *)&serveraddr, serverlen) < 0){
+             error("sendto");
+      }
+      return;
+    }
+    // make sure end < max_size
+    if (end >= total_packets) end = total_packets - 1;
+    int i;
+    for (i = start; i <= end; i ++){
+    	/* Create our snpkt */
+    	tcp_packet * sndpkt = make_send_packet(i);
+         /*
+          * If the sendto is called for the first time, the system will
+          * will assign a random port number so that server can send its
+          * response to the src port.
+          */
+       if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
                    ( const struct sockaddr *)&serveraddr, serverlen) < 0){
            error("sendto");
        }
-       return;
-	}
-  // make sure end < max_size
-	if (end >= total_packets) end = total_packets - 1;
-	int i;
-	for (i = start; i <= end; i ++){
-		/* Create our snpkt */
-		tcp_packet * sndpkt = make_send_packet(i);
-       /*
-        * If the sendto is called for the first time, the system will
-        * will assign a random port number so that server can send its
-        * response to the src port.
-        */
-            struct timeval tp;
-             gettimeofday(&tp, NULL);
-         double time = tp.tv_sec+(tp.tv_usec/1000000.0);
-         long ltime = tp.tv_sec*1000000+tp.tv_usec;
-         VLOG(DEBUG, "SENDING %lf at pkt %d", time, i);
-       if(sendto(sockfd, sndpkt, TCP_HDR_SIZE + get_data_size(sndpkt), 0,
-                   ( const struct sockaddr *)&serveraddr, serverlen) < 0)
-       {
-           error("sendto");
-       }
-	}
+    }
+}
+
+//Send as many packets as our window allows
+void send_packets(){
+  send_packets_end(last_sent+1,send_base+(int)floor(window_size)-1);
 }
 
 
-int main (int argc, char **argv)
-{
-    printf("Break1\n");
+int main (int argc, char **argv) {
    int portno;
    char *hostname;
    char buffer[DATA_SIZE];
@@ -188,7 +179,7 @@ int main (int argc, char **argv)
    /* Get the total size of our file */
    fseek(fp, 0L, SEEK_END);
    long sz = ftell(fp);
-   total_packets = sz / DATA_SIZE; //Get the packet number
+   total_packets = sz / DATA_SIZE;
 
    if (total_packets == 0) {
    	printf("File is empty\n");
@@ -215,7 +206,6 @@ int main (int argc, char **argv)
        fprintf(stderr,"ERROR, invalid host %s\n", hostname);
        exit(0);
    }
-   printf("Break2\n");
 
    /* build the server's Internet address */
    serveraddr.sin_family = AF_INET;
@@ -223,10 +213,9 @@ int main (int argc, char **argv)
    assert(MSS_SIZE - TCP_HDR_SIZE > 0);
 
    init_timer(RETRY, resend_packets);
-   printf("Break3\n");
    send_packets();
-   printf("Break4\n");
    start_timer();
+
    while (1){
     VLOG(DEBUG, "START WAITING TO RECEIVE");
      if(recvfrom(sockfd, buffer, MSS_SIZE, 0,
