@@ -2,305 +2,557 @@ Interface router-eth0 has index 2
 Interface router-eth1 has index 3
 Initialized ./DL_2_16Mbps queue with 249516 services.
 Initialized DL_2_16Mbps queue with 249516 services.
-uplink 0 0 / 1378500 = 0.0 % 0 
-downlink 0 0 / 1380000 = 0.0 % 0 
-uplink 1 34030 / 1537500 = 2.2 % 34958 
-downlink 1 914498 / 1534546 = 59.6 % 991712 
-uplink 2 57884 / 1540500 = 3.8 % 58058 
-downlink 2 1514000 / 1541238 = 98.2 % 1533682 
-uplink 3 58928 / 1537500 = 3.8 % 58754 
-downlink 3 1535196 / 1536898 = 99.9 % 1550336 
-uplink 4 44834 / 1167000 = 3.8 % 44660 
-downlink 4 1164266 / 1168014 = 99.7 % 1185462 
-uplink 5 41934 / 1170000 = 3.6 % 41876 
-downlink 5 1094622 / 1169538 = 93.6 % 1105220 
-uplink 6 40352 / 1051500 = 3.8 % 40352 
-downlink 6 1050758 / 1050758 = 100.0 % 1061356 
-uplink 7 42050 / 1096500 = 3.8 % 42050 
-downlink 7 1097650 / 1097650 = 100.0 % 1105220 
-uplink 8 11310 / 297000 = 3.8 % 11426 
-downlink 8 296744 / 296744 = 100.0 % 302800 
-uplink 9 23084 / 832500 = 2.8 % 22272 
-downlink 9 582890 / 831628 = 70.1 % 425434 
-uplink 10 21808 / 825000 = 2.6 % 22330 
-downlink 10 582890 / 826246 = 70.5 % 598030 
-uplink 11 29406 / 828000 = 3.6 % 29464 
-downlink 11 769112 / 828024 = 92.9 % 790308 
-uplink 12 29986 / 823500 = 3.6 % 29928 
-downlink 12 781224 / 823374 = 94.9 % 797878 
-uplink 13 30624 / 825000 = 3.7 % 30624 
-downlink 13 799392 / 824860 = 96.9 % 813018 
-uplink 14 54462 / 1503000 = 3.6 % 55332 
-downlink 14 1445870 / 1502516 = 96.2 % 1442842 
-uplink 15 75284 / 2037000 = 3.7 % 75284 
-downlink 15 1965172 / 2036650 = 96.5 % 1986368 
-uplink 16 76154 / 1989000 = 3.8 % 76038 
-downlink 16 1984854 / 1988902 = 99.8 % 2003022 
-uplink 17 75922 / 1983000 = 3.8 % 76038 
-downlink 17 1983340 / 1983340 = 100.0 % 2003022 
-uplink 18 76212 / 1992000 = 3.8 % 76212 
-downlink 18 1992424 / 1992424 = 100.0 % 2009078 
-uplink 19 52374 / 1336500 = 3.9 % 51330 
-downlink 19 1336862 / 1336862 = 100.0 % 1377740 
-uplink 20 23200 / 606000 = 3.8 % 23200 
-downlink 20 605600 / 605600 = 100.0 % 610142 
-uplink 21 24360 / 637500 = 3.8 % 24418 
-downlink 21 637394 / 637394 = 100.0 % 641936 
-uplink 22 23432 / 610500 = 3.8 % 23374 
-downlink 22 610142 / 610142 = 100.0 % 614684 
-uplink 23 23896 / 625500 = 3.8 % 23954 
-downlink 23 625282 / 625282 = 100.0 % 628310 
-uplink 24 26274 / 687000 = 3.8 % 26332 
-downlink 24 687356 / 687356 = 100.0 % 690384 
-uplink 25 29174 / 760500 = 3.8 % 29116 
-downlink 25 760028 / 760028 = 100.0 % 764570 
-uplink 26 29754 / 777000 = 3.8 % 29812 
-downlink 26 778196 / 778196 = 100.0 % 782738 
-uplink 27 28942 / 756000 = 3.8 % 28942 
-downlink 27 755486 / 755486 = 100.0 % 760028 
-uplink 28 29580 / 772500 = 3.8 % 29638 
-downlink 28 772140 / 772140 = 100.0 % 779710 
-uplink 29 40542 / 1080000 = 3.8 % 41296 
-downlink 29 1080996 / 1080996 = 100.0 % 1056772 
-uplink 30 72790 / 1902000 = 3.8 % 72906 
-downlink 30 1901584 / 1901584 = 100.0 % 1915210 
-uplink 31 72210 / 1882500 = 3.8 % 71978 
-downlink 31 1881902 / 1881902 = 100.0 % 1894014 
-uplink 32 72442 / 1894500 = 3.8 % 72616 
-downlink 32 1895528 / 1895528 = 100.0 % 1904612 
-uplink 33 73080 / 1905000 = 3.8 % 73022 
-downlink 33 1904612 / 1904612 = 100.0 % 1915210 
-uplink 34 71514 / 1864500 = 3.8 % 71398 
-downlink 34 1863734 / 1863734 = 100.0 % 1877360 
-uplink 35 68788 / 1797000 = 3.8 % 68904 
-downlink 35 1798632 / 1798632 = 100.0 % 1807716 
-uplink 36 71572 / 1870500 = 3.8 % 71572 
-downlink 36 1869790 / 1869790 = 100.0 % 1875846 
-uplink 37 69774 / 1818000 = 3.8 % 69774 
-downlink 37 1818314 / 1818314 = 100.0 % 1828912 
-uplink 38 68846 / 1797000 = 3.8 % 68672 
-downlink 38 1795604 / 1795604 = 100.0 % 1803174 
-uplink 39 68324 / 1776000 = 3.8 % 68150 
-downlink 39 1777436 / 1777436 = 100.0 % 1792576 
-uplink 40 53882 / 1407000 = 3.8 % 53940 
-downlink 40 1406506 / 1406506 = 100.0 % 1414076 
-uplink 41 51794 / 1413000 = 3.7 % 54056 
-downlink 41 1412562 / 1412562 = 100.0 % 1345946 
-uplink 42 53650 / 1362000 = 3.9 % 51968 
-downlink 42 1362600 / 1362600 = 100.0 % 1420132 
-uplink 43 54578 / 1401000 = 3.9 % 53940 
-downlink 43 1400450 / 1400450 = 100.0 % 1427702 
-uplink 44 54214 / 1416000 = 3.8 % 54272 
-downlink 44 1415632 / 1415632 = 100.0 % 1421688 
-uplink 45 52954 / 1381500 = 3.8 % 52954 
-downlink 45 1382282 / 1382282 = 100.0 % 1386824 
-uplink 46 52780 / 1381500 = 3.8 % 52896 
-downlink 46 1380768 / 1380768 = 100.0 % 1385310 
-uplink 47 53244 / 1386000 = 3.8 % 53128 
-downlink 47 1388338 / 1388338 = 100.0 % 1392880 
-uplink 48 52954 / 1383000 = 3.8 % 52896 
-downlink 48 1380768 / 1380768 = 100.0 % 1386824 
-uplink 49 53982 / 1407000 = 3.8 % 54040 
-downlink 49 1408062 / 1408062 = 100.0 % 1414118 
-uplink 50 72326 / 1899000 = 3.8 % 72674 
-downlink 50 1898556 / 1898556 = 100.0 % 1894014 
-uplink 51 73834 / 1927500 = 3.8 % 73834 
-downlink 51 1927322 / 1927322 = 100.0 % 1933378 
-uplink 52 77778 / 2029500 = 3.8 % 77662 
-downlink 52 2028760 / 2028760 = 100.0 % 2037844 
-uplink 53 73776 / 1926000 = 3.8 % 73834 
-downlink 53 1927322 / 1927322 = 100.0 % 1933378 
-uplink 54 74182 / 1936500 = 3.8 % 74240 
-downlink 54 1936406 / 1936406 = 100.0 % 1942462 
-uplink 55 75110 / 1959000 = 3.8 % 75052 
-downlink 55 1959116 / 1959116 = 100.0 % 1965172 
-uplink 56 72152 / 1884000 = 3.8 % 72152 
-downlink 56 1883416 / 1883416 = 100.0 % 1892500 
-uplink 57 73138 / 1911000 = 3.8 % 73196 
-downlink 57 1910668 / 1910668 = 100.0 % 1915210 
-uplink 58 73022 / 1905000 = 3.8 % 72964 
-downlink 58 1904612 / 1904612 = 100.0 % 1910668 
-downlink 59 1980312 / 1980312 = 100.0 % 1986368 
-uplink 59 75806 / 1980000 = 3.8 % 75864 
-uplink 60 76212 / 1993500 = 3.8 % 76386 
-downlink 60 1993938 / 1993938 = 100.0 % 1998480 
-uplink 61 79344 / 2071500 = 3.8 % 79402 
-downlink 61 2071152 / 2071152 = 100.0 % 2078722 
-uplink 62 80156 / 2091000 = 3.8 % 80040 
-downlink 62 2090834 / 2090834 = 100.0 % 2096890 
-uplink 63 79518 / 2076000 = 3.8 % 79460 
-downlink 63 2075694 / 2075694 = 100.0 % 2080236 
-uplink 64 79518 / 2074500 = 3.8 % 79576 
-downlink 64 2075694 / 2075694 = 100.0 % 2081750 
-uplink 65 59276 / 1524000 = 3.9 % 58406 
-downlink 65 1523084 / 1523084 = 100.0 % 1553364 
-uplink 66 35438 / 924000 = 3.8 % 35438 
-downlink 66 925054 / 925054 = 100.0 % 928082 
-uplink 67 35554 / 930000 = 3.8 % 35554 
-downlink 67 929596 / 929596 = 100.0 % 931110 
-uplink 68 38918 / 1015500 = 3.8 % 38976 
-downlink 68 1015894 / 1015894 = 100.0 % 1018922 
-uplink 69 35148 / 918000 = 3.8 % 35148 
-downlink 69 917484 / 917484 = 100.0 % 920512 
-uplink 70 32480 / 843000 = 3.9 % 32306 
-downlink 70 843298 / 843298 = 100.0 % 850868 
-uplink 71 28420 / 742500 = 3.8 % 28420 
-downlink 71 741860 / 741860 = 100.0 % 744888 
-uplink 72 27666 / 721500 = 3.8 % 27666 
-downlink 72 722178 / 722178 = 100.0 % 723692 
-uplink 73 27666 / 723000 = 3.8 % 27666 
-downlink 73 722178 / 722178 = 100.0 % 723692 
-uplink 74 28710 / 748500 = 3.8 % 28710 
-downlink 74 749430 / 749430 = 100.0 % 750944 
-uplink 75 32132 / 846000 = 3.8 % 32306 
-downlink 75 844812 / 844812 = 100.0 % 840270 
-uplink 76 42862 / 1120500 = 3.8 % 43036 
-downlink 76 1121874 / 1121874 = 100.0 % 1124902 
-uplink 77 42688 / 1114500 = 3.8 % 42688 
-downlink 77 1114304 / 1114304 = 100.0 % 1117332 
-uplink 78 42746 / 1114500 = 3.8 % 42688 
-downlink 78 1114304 / 1114304 = 100.0 % 1115818 
-uplink 79 42572 / 1113000 = 3.8 % 42630 
-downlink 79 1112790 / 1112790 = 100.0 % 1115818 
-uplink 80 34858 / 913500 = 3.8 % 34974 
-downlink 80 912942 / 912942 = 100.0 % 912942 
-uplink 81 50112 / 1306500 = 3.8 % 50054 
-downlink 81 1308096 / 1308096 = 100.0 % 1311124 
-uplink 82 49358 / 1290000 = 3.8 % 49416 
-downlink 82 1288414 / 1288414 = 100.0 % 1291442 
-uplink 83 49342 / 1288500 = 3.8 % 49400 
-downlink 83 1288456 / 1288456 = 100.0 % 1292998 
-uplink 84 49648 / 1293000 = 3.8 % 49474 
-downlink 84 1292956 / 1292956 = 100.0 % 1295984 
-uplink 85 48488 / 1254000 = 3.9 % 48140 
-downlink 85 1255106 / 1255106 = 100.0 % 1271760 
-uplink 86 28478 / 744000 = 3.8 % 28478 
-downlink 86 743374 / 743374 = 100.0 % 744888 
-uplink 87 29290 / 765000 = 3.8 % 29290 
-downlink 87 764570 / 764570 = 100.0 % 764570 
-uplink 88 28362 / 741000 = 3.8 % 28420 
-downlink 88 741860 / 741860 = 100.0 % 746402 
-uplink 89 25636 / 741000 = 3.5 % 28362 
-downlink 89 740346 / 740346 = 100.0 % 664646 
-uplink 90 28246 / 675000 = 4.2 % 25578 
-downlink 90 675244 / 675244 = 100.0 % 744888 
-uplink 91 78822 / 2076000 = 3.8 % 79692 
-downlink 91 2075694 / 2075694 = 100.0 % 2062068 
-uplink 92 79228 / 2065500 = 3.8 % 79228 
-downlink 92 2065096 / 2065096 = 100.0 % 2069638 
-uplink 93 79344 / 2073000 = 3.8 % 79344 
-downlink 93 2074180 / 2074180 = 100.0 % 2080236 
-uplink 94 79386 / 2071500 = 3.8 % 79502 
-downlink 94 2071194 / 2071194 = 100.0 % 2077250 
-uplink 95 79228 / 2067000 = 3.8 % 79112 
-downlink 95 2066610 / 2066610 = 100.0 % 2069638 
-uplink 96 37874 / 963000 = 3.9 % 36946 
-downlink 96 962904 / 962904 = 100.0 % 991670 
-uplink 97 33582 / 877500 = 3.8 % 33698 
-downlink 97 878120 / 878120 = 100.0 % 882662 
-uplink 98 32596 / 850500 = 3.8 % 32538 
-downlink 98 850868 / 850868 = 100.0 % 850868 
-uplink 99 33234 / 868500 = 3.8 % 33292 
-downlink 99 867522 / 867522 = 100.0 % 872064 
-uplink 100 33292 / 868500 = 3.8 % 33234 
-downlink 100 869036 / 869036 = 100.0 % 869036 
-uplink 101 67222 / 1776000 = 3.8 % 67976 
-downlink 101 1775922 / 1775922 = 100.0 % 1756240 
-uplink 102 76270 / 1993500 = 3.8 % 76328 
-downlink 102 1993938 / 1993938 = 100.0 % 1996966 
-uplink 103 76038 / 1984500 = 3.8 % 76038 
-downlink 103 1983340 / 1983340 = 100.0 % 1990910 
-uplink 104 76270 / 1992000 = 3.8 % 76270 
-downlink 104 1992424 / 1992424 = 100.0 % 1993938 
-uplink 105 78822 / 2053500 = 3.8 % 78764 
-downlink 105 2052984 / 2052984 = 100.0 % 2062068 
-uplink 106 78010 / 2041500 = 3.8 % 78184 
-downlink 106 2043900 / 2043900 = 100.0 % 2045414 
-uplink 107 79112 / 2065500 = 3.8 % 79054 
-downlink 107 2063582 / 2063582 = 100.0 % 2066610 
-uplink 108 79344 / 2068500 = 3.8 % 79286 
-downlink 108 2068124 / 2068124 = 100.0 % 2074180 
-uplink 109 78996 / 2061000 = 3.8 % 79054 
-downlink 109 2062068 / 2062068 = 100.0 % 2068124 
-uplink 110 79054 / 2067000 = 3.8 % 79170 
-downlink 110 2066610 / 2066610 = 100.0 % 2072666 
-uplink 111 50286 / 1285500 = 3.9 % 49242 
-downlink 111 1285386 / 1285386 = 100.0 % 1314152 
-uplink 112 30566 / 798000 = 3.8 % 30566 
-downlink 112 797878 / 797878 = 100.0 % 799392 
-uplink 113 30160 / 787500 = 3.8 % 30160 
-downlink 113 787280 / 787280 = 100.0 % 788794 
-uplink 114 33060 / 862500 = 3.8 % 33118 
-downlink 114 862980 / 862980 = 100.0 % 866008 
-uplink 115 30914 / 807000 = 3.8 % 30856 
-downlink 115 806962 / 806962 = 100.0 % 808476 
-uplink 116 48952 / 1297500 = 3.8 % 49648 
-downlink 116 1297498 / 1297498 = 100.0 % 1277816 
-uplink 117 68614 / 1792500 = 3.8 % 68672 
-downlink 117 1792576 / 1792576 = 100.0 % 1795604 
-uplink 118 47270 / 1230000 = 3.8 % 47154 
-downlink 118 1229368 / 1229368 = 100.0 % 1236938 
-uplink 119 68730 / 1798500 = 3.8 % 68846 
-downlink 119 1798632 / 1798632 = 100.0 % 1798632 
-uplink 120 68614 / 1789500 = 3.8 % 68614 
-downlink 120 1789548 / 1789548 = 100.0 % 1795604 
-uplink 121 61986 / 1608000 = 3.9 % 61638 
-downlink 121 1607868 / 1607868 = 100.0 % 1621536 
-uplink 122 50692 / 1323000 = 3.8 % 50692 
-downlink 122 1323278 / 1323278 = 100.0 % 1324750 
-uplink 123 51272 / 1338000 = 3.8 % 51272 
-downlink 123 1338376 / 1338376 = 100.0 % 1339890 
-uplink 124 50518 / 1318500 = 3.8 % 50460 
-downlink 124 1318694 / 1318694 = 100.0 % 1320208 
-uplink 125 50518 / 1318500 = 3.8 % 50576 
-downlink 125 1318694 / 1318694 = 100.0 % 1324750 
-uplink 126 51272 / 1339500 = 3.8 % 51272 
-downlink 126 1338376 / 1338376 = 100.0 % 1341404 
-downlink 127 1377740 / 1377740 = 100.0 % 1377740 
-uplink 127 52722 / 1377000 = 3.8 % 52722 
-uplink 128 52374 / 1366500 = 3.8 % 52316 
-downlink 128 1365628 / 1365628 = 100.0 % 1371684 
-uplink 129 52258 / 1363500 = 3.8 % 52258 
-downlink 129 1364114 / 1364114 = 100.0 % 1365628 
-uplink 130 52722 / 1377000 = 3.8 % 52896 
-downlink 130 1377740 / 1377740 = 100.0 % 1382282 
-uplink 131 47038 / 1212000 = 3.9 % 46342 
-downlink 131 1211200 / 1211200 = 100.0 % 1227854 
-uplink 132 24650 / 643500 = 3.8 % 24650 
-downlink 132 643450 / 643450 = 100.0 % 644964 
-uplink 133 23780 / 621000 = 3.8 % 23780 
-downlink 133 620740 / 620740 = 100.0 % 622254 
-uplink 134 23722 / 619500 = 3.8 % 23780 
-downlink 134 619226 / 619226 = 100.0 % 622254 
-uplink 135 26622 / 694500 = 3.8 % 26564 
-downlink 135 694926 / 694926 = 100.0 % 694926 
-uplink 136 23838 / 631500 = 3.8 % 24244 
-downlink 136 631338 / 631338 = 100.0 % 625282 
-uplink 137 38048 / 991500 = 3.8 % 37932 
-downlink 137 991670 / 991670 = 100.0 % 991670 
-uplink 138 36018 / 1063500 = 3.4 % 40774 
-downlink 138 1064342 / 1064342 = 100.0 % 931110 
-uplink 139 39830 / 915000 = 4.4 % 35074 
-downlink 139 914498 / 914498 = 100.0 % 1052272 
-uplink 140 41702 / 1089000 = 3.8 % 41702 
-downlink 140 1088566 / 1088566 = 100.0 % 1090080 
-uplink 141 42688 / 1116000 = 3.8 % 42746 
-downlink 141 1115818 / 1115818 = 100.0 % 1118846 
-uplink 142 50982 / 1336500 = 3.8 % 51156 
-downlink 142 1336862 / 1336862 = 100.0 % 1002838 
-uplink 143 15602 / 1401000 = 1.1 % 14732 
-downlink 143 380642 / 1401890 = 27.2 % 58 
+uplink 0 0 / 1206000 = 0.0 % 0 
+downlink 0 0 / 1206000 = 0.0 % 0 
+downlink , Stochastic drop of packet, _packets_added so far 108 , _packets_dropped 1 , drop rate 0.009259 
+uplink , Stochastic drop of packet, _packets_added so far 96 , _packets_dropped 1 , drop rate 0.010417 
+downlink , Stochastic drop of packet, _packets_added so far 160 , _packets_dropped 2 , drop rate 0.012500 
+downlink , Stochastic drop of packet, _packets_added so far 192 , _packets_dropped 3 , drop rate 0.015625 
+uplink , Stochastic drop of packet, _packets_added so far 216 , _packets_dropped 2 , drop rate 0.009259 
+downlink , Stochastic drop of packet, _packets_added so far 256 , _packets_dropped 4 , drop rate 0.015625 
+downlink , Stochastic drop of packet, _packets_added so far 257 , _packets_dropped 5 , drop rate 0.019455 
+downlink , Stochastic drop of packet, _packets_added so far 338 , _packets_dropped 6 , drop rate 0.017751 
+uplink , Stochastic drop of packet, _packets_added so far 372 , _packets_dropped 3 , drop rate 0.008065 
+uplink , Stochastic drop of packet, _packets_added so far 389 , _packets_dropped 4 , drop rate 0.010283 
+downlink , Stochastic drop of packet, _packets_added so far 429 , _packets_dropped 7 , drop rate 0.016317 
+uplink 1 24170 / 1549500 = 1.6 % 24286 
+downlink 1 649548 / 1549500 = 41.9 % 651062 
+uplink , Stochastic drop of packet, _packets_added so far 479 , _packets_dropped 5 , drop rate 0.010438 
+downlink , Stochastic drop of packet, _packets_added so far 509 , _packets_dropped 8 , drop rate 0.015717 
+downlink , Stochastic drop of packet, _packets_added so far 548 , _packets_dropped 9 , drop rate 0.016423 
+uplink , Stochastic drop of packet, _packets_added so far 544 , _packets_dropped 6 , drop rate 0.011029 
+uplink , Stochastic drop of packet, _packets_added so far 551 , _packets_dropped 7 , drop rate 0.012704 
+uplink , Stochastic drop of packet, _packets_added so far 606 , _packets_dropped 8 , drop rate 0.013201 
+uplink 2 10440 / 1540500 = 0.7 % 10730 
+downlink 2 277062 / 1540500 = 18.0 % 286146 
+downlink , Stochastic drop of packet, _packets_added so far 645 , _packets_dropped 10 , drop rate 0.015504 
+uplink , Stochastic drop of packet, _packets_added so far 666 , _packets_dropped 9 , drop rate 0.013514 
+downlink , Stochastic drop of packet, _packets_added so far 693 , _packets_dropped 11 , drop rate 0.015873 
+downlink , Stochastic drop of packet, _packets_added so far 820 , _packets_dropped 12 , drop rate 0.014634 
+uplink 3 13166 / 1524000 = 0.9 % 13050 
+downlink 3 342164 / 1522584 = 22.5 % 340650 
+uplink , Stochastic drop of packet, _packets_added so far 876 , _packets_dropped 10 , drop rate 0.011416 
+downlink , Stochastic drop of packet, _packets_added so far 947 , _packets_dropped 13 , drop rate 0.013728 
+downlink , Stochastic drop of packet, _packets_added so far 981 , _packets_dropped 14 , drop rate 0.014271 
+uplink , Stochastic drop of packet, _packets_added so far 1022 , _packets_dropped 11 , drop rate 0.010763 
+uplink , Stochastic drop of packet, _packets_added so far 1085 , _packets_dropped 12 , drop rate 0.011060 
+uplink 4 14964 / 1225500 = 1.2 % 14732 
+downlink 4 387584 / 1226916 = 31.6 % 389098 
+downlink , Stochastic drop of packet, _packets_added so far 1185 , _packets_dropped 15 , drop rate 0.012658 
+uplink , Stochastic drop of packet, _packets_added so far 1285 , _packets_dropped 13 , drop rate 0.010117 
+uplink 5 11774 / 1174500 = 1.0 % 11890 
+downlink 5 314912 / 1174500 = 26.8 % 304314 
+downlink , Stochastic drop of packet, _packets_added so far 1351 , _packets_dropped 16 , drop rate 0.011843 
+downlink , Stochastic drop of packet, _packets_added so far 1424 , _packets_dropped 17 , drop rate 0.011938 
+uplink , Stochastic drop of packet, _packets_added so far 1405 , _packets_dropped 14 , drop rate 0.009964 
+downlink , Stochastic drop of packet, _packets_added so far 1435 , _packets_dropped 18 , drop rate 0.012544 
+uplink , Stochastic drop of packet, _packets_added so far 1469 , _packets_dropped 15 , drop rate 0.010211 
+uplink , Stochastic drop of packet, _packets_added so far 1476 , _packets_dropped 16 , drop rate 0.010840 
+uplink 6 11062 / 1054500 = 1.0 % 10946 
+downlink 6 293758 / 1054500 = 27.9 % 293758 
+uplink , Stochastic drop of packet, _packets_added so far 1534 , _packets_dropped 17 , drop rate 0.011082 
+downlink , Stochastic drop of packet, _packets_added so far 1576 , _packets_dropped 19 , drop rate 0.012056 
+uplink , Stochastic drop of packet, _packets_added so far 1640 , _packets_dropped 18 , drop rate 0.010976 
+uplink 7 9976 / 1089000 = 0.9 % 10266 
+downlink 7 263436 / 1092000 = 24.1 % 263436 
+uplink 8 5452 / 412500 = 1.3 % 5510 
+downlink 8 143830 / 409500 = 35.1 % 157456 
+uplink 9 6612 / 747000 = 0.9 % 6206 
+downlink 9 178652 / 748500 = 23.9 % 165026 
+uplink , Stochastic drop of packet, _packets_added so far 1947 , _packets_dropped 19 , drop rate 0.009759 
+uplink , Stochastic drop of packet, _packets_added so far 1974 , _packets_dropped 20 , drop rate 0.010132 
+downlink , Stochastic drop of packet, _packets_added so far 2044 , _packets_dropped 20 , drop rate 0.009785 
+uplink , Stochastic drop of packet, _packets_added so far 2029 , _packets_dropped 21 , drop rate 0.010350 
+uplink , Stochastic drop of packet, _packets_added so far 2049 , _packets_dropped 22 , drop rate 0.010737 
+uplink , Stochastic drop of packet, _packets_added so far 2088 , _packets_dropped 23 , drop rate 0.011015 
+uplink , Stochastic drop of packet, _packets_added so far 2106 , _packets_dropped 24 , drop rate 0.011396 
+uplink , Stochastic drop of packet, _packets_added so far 2131 , _packets_dropped 25 , drop rate 0.011732 
+downlink , Stochastic drop of packet, _packets_added so far 2160 , _packets_dropped 21 , drop rate 0.009722 
+uplink 10 15370 / 823500 = 1.9 % 15370 
+downlink 10 399696 / 822000 = 48.6 % 401210 
+downlink , Stochastic drop of packet, _packets_added so far 2190 , _packets_dropped 22 , drop rate 0.010046 
+uplink , Stochastic drop of packet, _packets_added so far 2254 , _packets_dropped 26 , drop rate 0.011535 
+downlink , Stochastic drop of packet, _packets_added so far 2376 , _packets_dropped 23 , drop rate 0.009680 
+uplink 11 13398 / 834000 = 1.6 % 13456 
+downlink 11 357304 / 832598 = 42.9 % 378500 
+downlink , Stochastic drop of packet, _packets_added so far 2428 , _packets_dropped 24 , drop rate 0.009885 
+uplink , Stochastic drop of packet, _packets_added so far 2402 , _packets_dropped 27 , drop rate 0.011241 
+downlink , Stochastic drop of packet, _packets_added so far 2471 , _packets_dropped 25 , drop rate 0.010117 
+uplink , Stochastic drop of packet, _packets_added so far 2438 , _packets_dropped 28 , drop rate 0.011485 
+uplink , Stochastic drop of packet, _packets_added so far 2462 , _packets_dropped 29 , drop rate 0.011779 
+uplink , Stochastic drop of packet, _packets_added so far 2480 , _packets_dropped 30 , drop rate 0.012097 
+downlink , Stochastic drop of packet, _packets_added so far 2582 , _packets_dropped 26 , drop rate 0.010070 
+uplink 12 10904 / 816000 = 1.3 % 10962 
+downlink 12 284632 / 815916 = 34.9 % 281604 
+downlink , Stochastic drop of packet, _packets_added so far 2642 , _packets_dropped 27 , drop rate 0.010220 
+uplink , Stochastic drop of packet, _packets_added so far 2643 , _packets_dropped 31 , drop rate 0.011729 
+uplink , Stochastic drop of packet, _packets_added so far 2656 , _packets_dropped 32 , drop rate 0.012048 
+downlink , Stochastic drop of packet, _packets_added so far 2703 , _packets_dropped 28 , drop rate 0.010359 
+downlink , Stochastic drop of packet, _packets_added so far 2705 , _packets_dropped 29 , drop rate 0.010721 
+uplink 13 8236 / 829500 = 1.0 % 8294 
+downlink 13 218016 / 832486 = 26.2 % 198334 
+uplink , Stochastic drop of packet, _packets_added so far 2816 , _packets_dropped 33 , drop rate 0.011719 
+uplink , Stochastic drop of packet, _packets_added so far 2853 , _packets_dropped 34 , drop rate 0.011917 
+uplink , Stochastic drop of packet, _packets_added so far 2885 , _packets_dropped 35 , drop rate 0.012132 
+uplink , Stochastic drop of packet, _packets_added so far 3072 , _packets_dropped 36 , drop rate 0.011719 
+uplink 14 20880 / 1360500 = 1.5 % 21402 
+downlink 14 567750 / 1357640 = 41.8 % 588946 
+uplink , Stochastic drop of packet, _packets_added so far 3120 , _packets_dropped 37 , drop rate 0.011859 
+uplink , Stochastic drop of packet, _packets_added so far 3196 , _packets_dropped 38 , drop rate 0.011890 
+downlink , Stochastic drop of packet, _packets_added so far 3282 , _packets_dropped 30 , drop rate 0.009141 
+uplink , Stochastic drop of packet, _packets_added so far 3245 , _packets_dropped 39 , drop rate 0.012018 
+uplink , Stochastic drop of packet, _packets_added so far 3253 , _packets_dropped 40 , drop rate 0.012296 
+downlink , Stochastic drop of packet, _packets_added so far 3358 , _packets_dropped 31 , drop rate 0.009232 
+uplink 15 22040 / 2037000 = 1.1 % 21750 
+downlink 15 570778 / 2038360 = 28.0 % 554124 
+downlink , Stochastic drop of packet, _packets_added so far 3515 , _packets_dropped 32 , drop rate 0.009104 
+downlink , Stochastic drop of packet, _packets_added so far 3607 , _packets_dropped 33 , drop rate 0.009149 
+uplink , Stochastic drop of packet, _packets_added so far 3637 , _packets_dropped 41 , drop rate 0.011273 
+downlink , Stochastic drop of packet, _packets_added so far 3729 , _packets_dropped 34 , drop rate 0.009118 
+uplink 16 13746 / 2001000 = 0.7 % 13340 
+downlink 16 349734 / 2002500 = 17.5 % 345192 
+downlink , Stochastic drop of packet, _packets_added so far 3739 , _packets_dropped 35 , drop rate 0.009361 
+downlink , Stochastic drop of packet, _packets_added so far 3749 , _packets_dropped 36 , drop rate 0.009603 
+downlink , Stochastic drop of packet, _packets_added so far 3929 , _packets_dropped 37 , drop rate 0.009417 
+downlink , Stochastic drop of packet, _packets_added so far 3965 , _packets_dropped 38 , drop rate 0.009584 
+downlink , Stochastic drop of packet, _packets_added so far 3980 , _packets_dropped 39 , drop rate 0.009799 
+uplink 17 15544 / 1987500 = 0.8 % 16182 
+downlink 17 422406 / 1990500 = 21.2 % 422406 
+downlink , Stochastic drop of packet, _packets_added so far 4026 , _packets_dropped 40 , drop rate 0.009935 
+uplink , Stochastic drop of packet, _packets_added so far 3980 , _packets_dropped 42 , drop rate 0.010553 
+uplink , Stochastic drop of packet, _packets_added so far 4157 , _packets_dropped 43 , drop rate 0.010344 
+uplink 18 13108 / 1989000 = 0.7 % 12818 
+downlink 18 342164 / 1986000 = 17.2 % 346706 
+uplink , Stochastic drop of packet, _packets_added so far 4214 , _packets_dropped 44 , drop rate 0.010441 
+downlink , Stochastic drop of packet, _packets_added so far 4315 , _packets_dropped 41 , drop rate 0.009502 
+downlink , Stochastic drop of packet, _packets_added so far 4359 , _packets_dropped 42 , drop rate 0.009635 
+downlink , Stochastic drop of packet, _packets_added so far 4364 , _packets_dropped 43 , drop rate 0.009853 
+uplink , Stochastic drop of packet, _packets_added so far 4376 , _packets_dropped 45 , drop rate 0.010283 
+uplink , Stochastic drop of packet, _packets_added so far 4412 , _packets_dropped 46 , drop rate 0.010426 
+uplink , Stochastic drop of packet, _packets_added so far 4421 , _packets_dropped 47 , drop rate 0.010631 
+uplink 19 14152 / 1486500 = 1.0 % 14094 
+downlink 19 369416 / 1485000 = 24.9 % 372444 
+downlink , Stochastic drop of packet, _packets_added so far 4503 , _packets_dropped 44 , drop rate 0.009771 
+uplink , Stochastic drop of packet, _packets_added so far 4476 , _packets_dropped 48 , drop rate 0.010724 
+downlink , Stochastic drop of packet, _packets_added so far 4570 , _packets_dropped 45 , drop rate 0.009847 
+uplink , Stochastic drop of packet, _packets_added so far 4521 , _packets_dropped 49 , drop rate 0.010838 
+uplink , Stochastic drop of packet, _packets_added so far 4551 , _packets_dropped 50 , drop rate 0.010987 
+uplink , Stochastic drop of packet, _packets_added so far 4573 , _packets_dropped 51 , drop rate 0.011152 
+uplink , Stochastic drop of packet, _packets_added so far 4588 , _packets_dropped 52 , drop rate 0.011334 
+uplink , Stochastic drop of packet, _packets_added so far 4602 , _packets_dropped 53 , drop rate 0.011517 
+uplink 20 9628 / 606000 = 1.6 % 9628 
+downlink 20 261922 / 604570 = 43.3 % 261922 
+downlink , Stochastic drop of packet, _packets_added so far 4706 , _packets_dropped 46 , drop rate 0.009775 
+downlink , Stochastic drop of packet, _packets_added so far 4712 , _packets_dropped 47 , drop rate 0.009975 
+downlink , Stochastic drop of packet, _packets_added so far 4715 , _packets_dropped 48 , drop rate 0.010180 
+downlink , Stochastic drop of packet, _packets_added so far 4721 , _packets_dropped 49 , drop rate 0.010379 
+uplink 21 9048 / 637500 = 1.4 % 9222 
+downlink 21 239212 / 638930 = 37.4 % 234670 
+uplink , Stochastic drop of packet, _packets_added so far 4875 , _packets_dropped 54 , drop rate 0.011077 
+downlink , Stochastic drop of packet, _packets_added so far 4959 , _packets_dropped 50 , drop rate 0.010083 
+uplink , Stochastic drop of packet, _packets_added so far 4939 , _packets_dropped 55 , drop rate 0.011136 
+uplink , Stochastic drop of packet, _packets_added so far 4995 , _packets_dropped 56 , drop rate 0.011211 
+downlink , Stochastic drop of packet, _packets_added so far 5055 , _packets_dropped 51 , drop rate 0.010089 
+uplink 22 14616 / 610500 = 2.4 % 14384 
+downlink 22 380014 / 610500 = 62.2 % 376986 
+uplink , Stochastic drop of packet, _packets_added so far 5046 , _packets_dropped 57 , drop rate 0.011296 
+uplink , Stochastic drop of packet, _packets_added so far 5057 , _packets_dropped 58 , drop rate 0.011469 
+downlink , Stochastic drop of packet, _packets_added so far 5158 , _packets_dropped 52 , drop rate 0.010081 
+uplink 23 9860 / 625500 = 1.6 % 9628 
+downlink 23 254352 / 625500 = 40.7 % 260408 
+downlink , Stochastic drop of packet, _packets_added so far 5322 , _packets_dropped 53 , drop rate 0.009959 
+uplink , Stochastic drop of packet, _packets_added so far 5326 , _packets_dropped 59 , drop rate 0.011078 
+downlink , Stochastic drop of packet, _packets_added so far 5464 , _packets_dropped 54 , drop rate 0.009883 
+uplink , Stochastic drop of packet, _packets_added so far 5410 , _packets_dropped 60 , drop rate 0.011091 
+downlink , Stochastic drop of packet, _packets_added so far 5474 , _packets_dropped 55 , drop rate 0.010047 
+uplink 24 13398 / 670500 = 2.0 % 13456 
+downlink 24 355790 / 669014 = 53.2 % 366388 
+uplink , Stochastic drop of packet, _packets_added so far 5491 , _packets_dropped 61 , drop rate 0.011109 
+downlink , Stochastic drop of packet, _packets_added so far 5553 , _packets_dropped 56 , drop rate 0.010085 
+downlink , Stochastic drop of packet, _packets_added so far 5659 , _packets_dropped 57 , drop rate 0.010072 
+uplink 25 9106 / 760500 = 1.2 % 9454 
+downlink 25 248296 / 760542 = 32.6 % 237698 
+uplink , Stochastic drop of packet, _packets_added so far 5636 , _packets_dropped 62 , drop rate 0.011001 
+uplink , Stochastic drop of packet, _packets_added so far 5674 , _packets_dropped 63 , drop rate 0.011103 
+uplink 26 10498 / 780000 = 1.3 % 10382 
+downlink 26 272520 / 781444 = 34.9 % 275548 
+uplink , Stochastic drop of packet, _packets_added so far 5786 , _packets_dropped 64 , drop rate 0.011061 
+downlink , Stochastic drop of packet, _packets_added so far 5938 , _packets_dropped 58 , drop rate 0.009768 
+uplink , Stochastic drop of packet, _packets_added so far 5870 , _packets_dropped 65 , drop rate 0.011073 
+downlink , Stochastic drop of packet, _packets_added so far 5958 , _packets_dropped 59 , drop rate 0.009903 
+uplink , Stochastic drop of packet, _packets_added so far 5978 , _packets_dropped 66 , drop rate 0.011040 
+uplink 27 13630 / 753000 = 1.8 % 13398 
+downlink 27 355790 / 751528 = 47.3 % 352762 
+uplink , Stochastic drop of packet, _packets_added so far 6154 , _packets_dropped 67 , drop rate 0.010887 
+downlink , Stochastic drop of packet, _packets_added so far 6306 , _packets_dropped 60 , drop rate 0.009515 
+downlink , Stochastic drop of packet, _packets_added so far 6360 , _packets_dropped 61 , drop rate 0.009591 
+uplink 28 17052 / 772500 = 2.2 % 17458 
+downlink 28 458742 / 773060 = 59.3 % 473882 
+downlink , Stochastic drop of packet, _packets_added so far 6444 , _packets_dropped 62 , drop rate 0.009621 
+uplink , Stochastic drop of packet, _packets_added so far 6411 , _packets_dropped 68 , drop rate 0.010607 
+downlink , Stochastic drop of packet, _packets_added so far 6526 , _packets_dropped 63 , drop rate 0.009654 
+uplink 29 9918 / 957000 = 1.0 % 9570 
+downlink 29 271006 / 960912 = 28.2 % 249810 
+downlink , Stochastic drop of packet, _packets_added so far 6653 , _packets_dropped 64 , drop rate 0.009620 
+uplink 30 10266 / 1903500 = 0.5 % 10150 
+downlink 30 242240 / 1900500 = 12.7 % 263436 
+uplink , Stochastic drop of packet, _packets_added so far 6686 , _packets_dropped 69 , drop rate 0.010320 
+downlink , Stochastic drop of packet, _packets_added so far 6846 , _packets_dropped 65 , drop rate 0.009495 
+uplink , Stochastic drop of packet, _packets_added so far 6778 , _packets_dropped 70 , drop rate 0.010328 
+uplink , Stochastic drop of packet, _packets_added so far 6789 , _packets_dropped 71 , drop rate 0.010458 
+downlink , Stochastic drop of packet, _packets_added so far 6876 , _packets_dropped 66 , drop rate 0.009599 
+downlink , Stochastic drop of packet, _packets_added so far 6928 , _packets_dropped 67 , drop rate 0.009671 
+uplink , Stochastic drop of packet, _packets_added so far 6883 , _packets_dropped 72 , drop rate 0.010461 
+uplink , Stochastic drop of packet, _packets_added so far 6911 , _packets_dropped 73 , drop rate 0.010563 
+uplink 31 15950 / 1870500 = 0.9 % 16182 
+downlink 31 429976 / 1870500 = 23.0 % 408780 
+downlink , Stochastic drop of packet, _packets_added so far 7012 , _packets_dropped 68 , drop rate 0.009698 
+uplink , Stochastic drop of packet, _packets_added so far 6971 , _packets_dropped 74 , drop rate 0.010615 
+downlink , Stochastic drop of packet, _packets_added so far 7051 , _packets_dropped 69 , drop rate 0.009786 
+uplink , Stochastic drop of packet, _packets_added so far 7043 , _packets_dropped 75 , drop rate 0.010649 
+uplink , Stochastic drop of packet, _packets_added so far 7060 , _packets_dropped 76 , drop rate 0.010765 
+uplink , Stochastic drop of packet, _packets_added so far 7101 , _packets_dropped 77 , drop rate 0.010844 
+uplink , Stochastic drop of packet, _packets_added so far 7119 , _packets_dropped 78 , drop rate 0.010957 
+uplink , Stochastic drop of packet, _packets_added so far 7138 , _packets_dropped 79 , drop rate 0.011068 
+uplink 32 12238 / 1891500 = 0.6 % 12470 
+downlink 32 334594 / 1894500 = 17.7 % 351248 
+downlink , Stochastic drop of packet, _packets_added so far 7284 , _packets_dropped 70 , drop rate 0.009610 
+uplink , Stochastic drop of packet, _packets_added so far 7421 , _packets_dropped 80 , drop rate 0.010780 
+uplink 33 15660 / 1908000 = 0.8 % 15544 
+downlink 33 407266 / 1906500 = 21.4 % 396668 
+uplink , Stochastic drop of packet, _packets_added so far 7461 , _packets_dropped 81 , drop rate 0.010856 
+downlink , Stochastic drop of packet, _packets_added so far 7580 , _packets_dropped 71 , drop rate 0.009367 
+downlink , Stochastic drop of packet, _packets_added so far 7669 , _packets_dropped 72 , drop rate 0.009388 
+uplink , Stochastic drop of packet, _packets_added so far 7584 , _packets_dropped 82 , drop rate 0.010812 
+uplink , Stochastic drop of packet, _packets_added so far 7617 , _packets_dropped 83 , drop rate 0.010897 
+uplink , Stochastic drop of packet, _packets_added so far 7624 , _packets_dropped 84 , drop rate 0.011018 
+uplink 34 12412 / 1885500 = 0.7 % 12064 
+downlink 34 333080 / 1884000 = 17.7 % 327024 
+downlink , Stochastic drop of packet, _packets_added so far 7744 , _packets_dropped 73 , drop rate 0.009427 
+downlink , Stochastic drop of packet, _packets_added so far 7839 , _packets_dropped 74 , drop rate 0.009440 
+downlink , Stochastic drop of packet, _packets_added so far 7954 , _packets_dropped 75 , drop rate 0.009429 
+uplink 35 13804 / 1785000 = 0.8 % 13804 
+downlink 35 348220 / 1785000 = 19.5 % 352762 
+uplink , Stochastic drop of packet, _packets_added so far 7907 , _packets_dropped 85 , drop rate 0.010750 
+uplink , Stochastic drop of packet, _packets_added so far 7933 , _packets_dropped 86 , drop rate 0.010841 
+downlink , Stochastic drop of packet, _packets_added so far 8048 , _packets_dropped 76 , drop rate 0.009443 
+uplink , Stochastic drop of packet, _packets_added so far 8020 , _packets_dropped 87 , drop rate 0.010848 
+uplink 36 10556 / 1813500 = 0.6 % 10788 
+downlink 36 286146 / 1813500 = 15.8 % 281604 
+downlink , Stochastic drop of packet, _packets_added so far 8219 , _packets_dropped 77 , drop rate 0.009369 
+uplink , Stochastic drop of packet, _packets_added so far 8231 , _packets_dropped 88 , drop rate 0.010691 
+uplink 37 9976 / 1783500 = 0.6 % 9744 
+downlink 37 255866 / 1783500 = 14.3 % 263436 
+downlink , Stochastic drop of packet, _packets_added so far 8347 , _packets_dropped 78 , drop rate 0.009345 
+downlink , Stochastic drop of packet, _packets_added so far 8355 , _packets_dropped 79 , drop rate 0.009455 
+uplink , Stochastic drop of packet, _packets_added so far 8285 , _packets_dropped 89 , drop rate 0.010742 
+uplink , Stochastic drop of packet, _packets_added so far 8298 , _packets_dropped 90 , drop rate 0.010846 
+downlink , Stochastic drop of packet, _packets_added so far 8430 , _packets_dropped 80 , drop rate 0.009490 
+uplink , Stochastic drop of packet, _packets_added so far 8367 , _packets_dropped 91 , drop rate 0.010876 
+downlink , Stochastic drop of packet, _packets_added so far 8476 , _packets_dropped 81 , drop rate 0.009556 
+downlink , Stochastic drop of packet, _packets_added so far 8505 , _packets_dropped 82 , drop rate 0.009641 
+uplink , Stochastic drop of packet, _packets_added so far 8416 , _packets_dropped 92 , drop rate 0.010932 
+uplink 38 13166 / 1822500 = 0.7 % 13166 
+downlink 38 349734 / 1822500 = 19.2 % 369416 
+downlink , Stochastic drop of packet, _packets_added so far 8759 , _packets_dropped 83 , drop rate 0.009476 
+uplink 39 12064 / 1792500 = 0.7 % 12412 
+downlink 39 323996 / 1792500 = 18.1 % 313398 
+uplink , Stochastic drop of packet, _packets_added so far 8746 , _packets_dropped 93 , drop rate 0.010633 
+downlink , Stochastic drop of packet, _packets_added so far 8929 , _packets_dropped 84 , drop rate 0.009408 
+uplink 40 11890 / 1435500 = 0.8 % 11542 
+downlink 40 302800 / 1435500 = 21.1 % 305828 
+downlink , Stochastic drop of packet, _packets_added so far 9028 , _packets_dropped 85 , drop rate 0.009415 
+downlink , Stochastic drop of packet, _packets_added so far 9040 , _packets_dropped 86 , drop rate 0.009513 
+downlink , Stochastic drop of packet, _packets_added so far 9112 , _packets_dropped 87 , drop rate 0.009548 
+uplink 41 10150 / 1419000 = 0.7 % 10324 
+downlink 41 278576 / 1419000 = 19.6 % 258894 
+uplink , Stochastic drop of packet, _packets_added so far 9066 , _packets_dropped 94 , drop rate 0.010368 
+downlink , Stochastic drop of packet, _packets_added so far 9198 , _packets_dropped 88 , drop rate 0.009567 
+uplink , Stochastic drop of packet, _packets_added so far 9141 , _packets_dropped 95 , drop rate 0.010393 
+uplink , Stochastic drop of packet, _packets_added so far 9156 , _packets_dropped 96 , drop rate 0.010485 
+uplink , Stochastic drop of packet, _packets_added so far 9172 , _packets_dropped 97 , drop rate 0.010576 
+uplink , Stochastic drop of packet, _packets_added so far 9230 , _packets_dropped 98 , drop rate 0.010618 
+uplink 42 10788 / 1402500 = 0.8 % 11020 
+downlink 42 286146 / 1402500 = 20.4 % 287660 
+downlink , Stochastic drop of packet, _packets_added so far 9353 , _packets_dropped 89 , drop rate 0.009516 
+uplink , Stochastic drop of packet, _packets_added so far 9289 , _packets_dropped 99 , drop rate 0.010658 
+downlink , Stochastic drop of packet, _packets_added so far 9380 , _packets_dropped 90 , drop rate 0.009595 
+downlink , Stochastic drop of packet, _packets_added so far 9408 , _packets_dropped 91 , drop rate 0.009673 
+downlink , Stochastic drop of packet, _packets_added so far 9477 , _packets_dropped 92 , drop rate 0.009708 
+uplink , Stochastic drop of packet, _packets_added so far 9385 , _packets_dropped 100 , drop rate 0.010655 
+downlink , Stochastic drop of packet, _packets_added so far 9506 , _packets_dropped 93 , drop rate 0.009783 
+uplink 43 9164 / 1420500 = 0.6 % 8758 
+downlink 43 231642 / 1420500 = 16.3 % 242240 
+downlink , Stochastic drop of packet, _packets_added so far 9523 , _packets_dropped 94 , drop rate 0.009871 
+uplink , Stochastic drop of packet, _packets_added so far 9455 , _packets_dropped 101 , drop rate 0.010682 
+downlink , Stochastic drop of packet, _packets_added so far 9632 , _packets_dropped 95 , drop rate 0.009863 
+downlink , Stochastic drop of packet, _packets_added so far 9662 , _packets_dropped 96 , drop rate 0.009936 
+downlink , Stochastic drop of packet, _packets_added so far 9700 , _packets_dropped 97 , drop rate 0.010000 
+downlink , Stochastic drop of packet, _packets_added so far 9740 , _packets_dropped 98 , drop rate 0.010062 
+uplink , Stochastic drop of packet, _packets_added so far 9647 , _packets_dropped 102 , drop rate 0.010573 
+uplink 44 14906 / 1416000 = 1.1 % 14906 
+downlink 44 392126 / 1416000 = 27.7 % 384556 
+uplink , Stochastic drop of packet, _packets_added so far 9762 , _packets_dropped 103 , drop rate 0.010551 
+uplink , Stochastic drop of packet, _packets_added so far 9781 , _packets_dropped 104 , drop rate 0.010633 
+downlink , Stochastic drop of packet, _packets_added so far 9910 , _packets_dropped 99 , drop rate 0.009990 
+uplink , Stochastic drop of packet, _packets_added so far 9858 , _packets_dropped 105 , drop rate 0.010651 
+uplink 45 13688 / 1386000 = 1.0 % 13804 
+downlink 45 364874 / 1386000 = 26.3 % 366388 
+downlink , Stochastic drop of packet, _packets_added so far 10033 , _packets_dropped 100 , drop rate 0.009967 
+uplink , Stochastic drop of packet, _packets_added so far 9951 , _packets_dropped 106 , drop rate 0.010652 
+downlink , Stochastic drop of packet, _packets_added so far 10086 , _packets_dropped 101 , drop rate 0.010014 
+downlink , Stochastic drop of packet, _packets_added so far 10104 , _packets_dropped 102 , drop rate 0.010095 
+downlink , Stochastic drop of packet, _packets_added so far 10116 , _packets_dropped 103 , drop rate 0.010182 
+downlink , Stochastic drop of packet, _packets_added so far 10145 , _packets_dropped 104 , drop rate 0.010251 
+uplink 46 9686 / 1381500 = 0.7 % 9570 
+downlink 46 251324 / 1381500 = 18.2 % 278576 
+downlink , Stochastic drop of packet, _packets_added so far 10230 , _packets_dropped 105 , drop rate 0.010264 
+uplink , Stochastic drop of packet, _packets_added so far 10186 , _packets_dropped 107 , drop rate 0.010505 
+uplink , Stochastic drop of packet, _packets_added so far 10202 , _packets_dropped 108 , drop rate 0.010586 
+uplink 47 12876 / 1386000 = 0.9 % 13108 
+downlink 47 345192 / 1386000 = 24.9 % 333080 
+downlink , Stochastic drop of packet, _packets_added so far 10670 , _packets_dropped 106 , drop rate 0.009934 
+uplink , Stochastic drop of packet, _packets_added so far 10584 , _packets_dropped 109 , drop rate 0.010299 
+downlink , Stochastic drop of packet, _packets_added so far 10740 , _packets_dropped 107 , drop rate 0.009963 
+downlink , Stochastic drop of packet, _packets_added so far 10760 , _packets_dropped 108 , drop rate 0.010037 
+uplink , Stochastic drop of packet, _packets_added so far 10656 , _packets_dropped 110 , drop rate 0.010323 
+uplink , Stochastic drop of packet, _packets_added so far 10662 , _packets_dropped 111 , drop rate 0.010411 
+uplink 48 23880 / 1383000 = 1.7 % 23880 
+downlink 48 626838 / 1383000 = 45.3 % 605642 
+uplink , Stochastic drop of packet, _packets_added so far 10798 , _packets_dropped 112 , drop rate 0.010372 
+downlink , Stochastic drop of packet, _packets_added so far 10966 , _packets_dropped 109 , drop rate 0.009940 
+downlink , Stochastic drop of packet, _packets_added so far 10970 , _packets_dropped 110 , drop rate 0.010027 
+uplink , Stochastic drop of packet, _packets_added so far 10953 , _packets_dropped 113 , drop rate 0.010317 
+uplink 49 13804 / 1407000 = 1.0 % 13572 
+downlink 49 357304 / 1407000 = 25.4 % 358818 
+downlink , Stochastic drop of packet, _packets_added so far 11223 , _packets_dropped 111 , drop rate 0.009890 
+downlink , Stochastic drop of packet, _packets_added so far 11242 , _packets_dropped 112 , drop rate 0.009963 
+downlink , Stochastic drop of packet, _packets_added so far 11243 , _packets_dropped 113 , drop rate 0.010051 
+downlink , Stochastic drop of packet, _packets_added so far 11275 , _packets_dropped 114 , drop rate 0.010111 
+uplink 50 14210 / 1845000 = 0.8 % 14732 
+downlink 50 386070 / 1852500 = 20.8 % 387584 
+downlink , Stochastic drop of packet, _packets_added so far 11452 , _packets_dropped 115 , drop rate 0.010042 
+uplink , Stochastic drop of packet, _packets_added so far 11412 , _packets_dropped 114 , drop rate 0.009989 
+downlink , Stochastic drop of packet, _packets_added so far 11560 , _packets_dropped 116 , drop rate 0.010035 
+uplink 51 13514 / 1915500 = 0.7 % 13050 
+downlink 51 340650 / 1908000 = 17.9 % 360332 
+uplink , Stochastic drop of packet, _packets_added so far 11439 , _packets_dropped 115 , drop rate 0.010053 
+uplink , Stochastic drop of packet, _packets_added so far 11512 , _packets_dropped 116 , drop rate 0.010076 
+uplink , Stochastic drop of packet, _packets_added so far 11526 , _packets_dropped 117 , drop rate 0.010151 
+downlink , Stochastic drop of packet, _packets_added so far 11751 , _packets_dropped 117 , drop rate 0.009957 
+uplink 52 13282 / 2031000 = 0.7 % 13514 
+downlink 52 360332 / 2029528 = 17.8 % 360332 
+downlink , Stochastic drop of packet, _packets_added so far 11805 , _packets_dropped 118 , drop rate 0.009996 
+downlink , Stochastic drop of packet, _packets_added so far 11860 , _packets_dropped 119 , drop rate 0.010034 
+downlink , Stochastic drop of packet, _packets_added so far 11896 , _packets_dropped 120 , drop rate 0.010087 
+downlink , Stochastic drop of packet, _packets_added so far 11916 , _packets_dropped 121 , drop rate 0.010154 
+uplink , Stochastic drop of packet, _packets_added so far 11839 , _packets_dropped 118 , drop rate 0.009967 
+uplink 53 11120 / 1936500 = 0.6 % 10946 
+downlink 53 283160 / 1946972 = 14.5 % 260450 
+downlink , Stochastic drop of packet, _packets_added so far 12041 , _packets_dropped 122 , drop rate 0.010132 
+uplink , Stochastic drop of packet, _packets_added so far 11915 , _packets_dropped 119 , drop rate 0.009987 
+downlink , Stochastic drop of packet, _packets_added so far 12052 , _packets_dropped 123 , drop rate 0.010206 
+downlink , Stochastic drop of packet, _packets_added so far 12114 , _packets_dropped 124 , drop rate 0.010236 
+uplink 54 12528 / 1938000 = 0.6 % 12760 
+downlink 54 334594 / 1932000 = 17.3 % 334594 
+downlink , Stochastic drop of packet, _packets_added so far 12236 , _packets_dropped 125 , drop rate 0.010216 
+downlink , Stochastic drop of packet, _packets_added so far 12299 , _packets_dropped 126 , drop rate 0.010245 
+uplink , Stochastic drop of packet, _packets_added so far 12210 , _packets_dropped 120 , drop rate 0.009828 
+downlink , Stochastic drop of packet, _packets_added so far 12342 , _packets_dropped 127 , drop rate 0.010290 
+downlink , Stochastic drop of packet, _packets_added so far 12344 , _packets_dropped 128 , drop rate 0.010369 
+downlink , Stochastic drop of packet, _packets_added so far 12357 , _packets_dropped 129 , drop rate 0.010439 
+uplink , Stochastic drop of packet, _packets_added so far 12227 , _packets_dropped 121 , drop rate 0.009896 
+uplink , Stochastic drop of packet, _packets_added so far 12228 , _packets_dropped 122 , drop rate 0.009977 
+downlink , Stochastic drop of packet, _packets_added so far 12359 , _packets_dropped 130 , drop rate 0.010519 
+uplink 55 8932 / 1951500 = 0.5 % 8584 
+downlink 55 228614 / 1948500 = 11.7 % 228614 
+uplink 56 0 / 1882500 = 0.0 % 0 
+downlink 56 0 / 1882500 = 0.0 % 0 
+uplink 57 0 / 1911000 = 0.0 % 0 
+downlink 57 0 / 1911000 = 0.0 % 0 
+uplink 58 0 / 1914000 = 0.0 % 0 
+downlink 58 0 / 1914000 = 0.0 % 0 
+uplink 59 0 / 1996500 = 0.0 % 0 
+downlink 59 0 / 1999500 = 0.0 % 0 
+uplink 60 0 / 1974000 = 0.0 % 0 
+downlink 60 0 / 1971000 = 0.0 % 0 
+uplink 61 0 / 2055000 = 0.0 % 0 
+downlink 61 0 / 2056500 = 0.0 % 0 
+uplink 62 0 / 2097000 = 0.0 % 0 
+downlink 62 0 / 2095500 = 0.0 % 0 
+uplink 63 0 / 2059500 = 0.0 % 0 
+downlink 63 0 / 2059500 = 0.0 % 0 
+uplink 64 0 / 2088000 = 0.0 % 0 
+downlink 64 0 / 2088000 = 0.0 % 0 
+uplink 65 0 / 1648500 = 0.0 % 0 
+downlink 65 0 / 1648500 = 0.0 % 0 
+uplink 66 0 / 928500 = 0.0 % 0 
+downlink 66 0 / 928500 = 0.0 % 0 
+uplink 67 0 / 933000 = 0.0 % 0 
+downlink 67 0 / 933000 = 0.0 % 0 
+uplink 68 0 / 1008000 = 0.0 % 0 
+downlink 68 0 / 1008000 = 0.0 % 0 
+uplink 69 0 / 922500 = 0.0 % 0 
+downlink 69 0 / 922500 = 0.0 % 0 
+uplink 70 0 / 868500 = 0.0 % 0 
+downlink 70 0 / 868500 = 0.0 % 0 
+uplink 71 0 / 736500 = 0.0 % 0 
+downlink 71 0 / 736500 = 0.0 % 0 
+uplink 72 0 / 720000 = 0.0 % 0 
+downlink 72 0 / 720000 = 0.0 % 0 
+uplink 73 0 / 727500 = 0.0 % 0 
+downlink 73 0 / 727500 = 0.0 % 0 
+uplink 74 0 / 745500 = 0.0 % 0 
+downlink 74 0 / 745500 = 0.0 % 0 
+uplink 75 0 / 811500 = 0.0 % 0 
+downlink 75 0 / 813000 = 0.0 % 0 
+uplink 76 0 / 1108500 = 0.0 % 0 
+downlink 76 0 / 1107000 = 0.0 % 0 
+uplink 77 0 / 1113000 = 0.0 % 0 
+downlink 77 0 / 1113000 = 0.0 % 0 
+uplink 78 0 / 1122000 = 0.0 % 0 
+downlink 78 0 / 1122000 = 0.0 % 0 
+uplink 79 0 / 1117500 = 0.0 % 0 
+downlink 79 0 / 1117500 = 0.0 % 0 
+uplink 80 0 / 958500 = 0.0 % 0 
+downlink 80 0 / 958500 = 0.0 % 0 
+uplink 81 0 / 1228500 = 0.0 % 0 
+downlink 81 0 / 1237500 = 0.0 % 0 
+uplink 82 0 / 1296000 = 0.0 % 0 
+downlink 82 0 / 1287000 = 0.0 % 0 
+uplink 83 0 / 1282500 = 0.0 % 0 
+downlink 83 0 / 1282500 = 0.0 % 0 
+uplink 84 0 / 1224000 = 0.0 % 0 
+downlink 84 0 / 1224000 = 0.0 % 0 
+uplink 85 0 / 1296000 = 0.0 % 0 
+downlink 85 0 / 1296000 = 0.0 % 0 
+uplink 86 0 / 762000 = 0.0 % 0 
+downlink 86 0 / 762000 = 0.0 % 0 
+uplink 87 0 / 738000 = 0.0 % 0 
+downlink 87 0 / 738000 = 0.0 % 0 
+uplink 88 0 / 766500 = 0.0 % 0 
+downlink 88 0 / 766500 = 0.0 % 0 
+uplink 89 0 / 741000 = 0.0 % 0 
+downlink 89 0 / 741000 = 0.0 % 0 
+uplink 90 0 / 741000 = 0.0 % 0 
+downlink 90 0 / 741000 = 0.0 % 0 
+uplink 91 0 / 1927500 = 0.0 % 0 
+downlink 91 0 / 1927500 = 0.0 % 0 
+uplink 92 0 / 2068500 = 0.0 % 0 
+downlink 92 0 / 2068500 = 0.0 % 0 
+uplink 93 0 / 2071500 = 0.0 % 0 
+downlink 93 0 / 2071500 = 0.0 % 0 
+uplink 94 0 / 2082000 = 0.0 % 0 
+downlink 94 0 / 2082000 = 0.0 % 0 
+uplink 95 0 / 2055000 = 0.0 % 0 
+downlink 95 0 / 2055000 = 0.0 % 0 
+uplink 96 0 / 1120500 = 0.0 % 0 
+downlink 96 0 / 1120500 = 0.0 % 0 
+uplink 97 0 / 867000 = 0.0 % 0 
+downlink 97 0 / 867000 = 0.0 % 0 
+uplink 98 0 / 856500 = 0.0 % 0 
+downlink 98 0 / 856500 = 0.0 % 0 
+uplink 99 0 / 867000 = 0.0 % 0 
+downlink 99 0 / 867000 = 0.0 % 0 
+uplink 100 0 / 862500 = 0.0 % 0 
+downlink 100 0 / 862500 = 0.0 % 0 
+uplink 101 0 / 1645500 = 0.0 % 0 
+downlink 101 0 / 1645500 = 0.0 % 0 
+uplink 102 0 / 1989000 = 0.0 % 0 
+downlink 102 0 / 1989000 = 0.0 % 0 
+uplink 103 0 / 1995000 = 0.0 % 0 
+downlink 103 0 / 1995000 = 0.0 % 0 
+uplink 104 0 / 1989000 = 0.0 % 0 
+downlink 104 0 / 1989000 = 0.0 % 0 
+uplink 105 0 / 2046000 = 0.0 % 0 
+downlink 105 0 / 2046000 = 0.0 % 0 
+uplink 106 0 / 2031000 = 0.0 % 0 
+downlink 106 0 / 2031000 = 0.0 % 0 
+uplink 107 0 / 2068500 = 0.0 % 0 
+downlink 107 0 / 2068500 = 0.0 % 0 
+uplink 108 0 / 2071500 = 0.0 % 0 
+downlink 108 0 / 2071500 = 0.0 % 0 
+uplink 109 0 / 2059500 = 0.0 % 0 
+downlink 109 0 / 2059500 = 0.0 % 0 
+uplink 110 0 / 2071500 = 0.0 % 0 
+downlink 110 0 / 2074500 = 0.0 % 0 
+uplink 111 0 / 1429500 = 0.0 % 0 
+downlink 111 0 / 1426500 = 0.0 % 0 
+uplink 112 0 / 804000 = 0.0 % 0 
+downlink 112 0 / 804000 = 0.0 % 0 
+uplink 113 0 / 781500 = 0.0 % 0 
+downlink 113 0 / 781500 = 0.0 % 0 
+uplink 114 0 / 864000 = 0.0 % 0 
+downlink 114 0 / 864000 = 0.0 % 0 
+uplink 115 0 / 805500 = 0.0 % 0 
+downlink 115 0 / 805500 = 0.0 % 0 
+uplink 116 0 / 1177500 = 0.0 % 0 
+downlink 116 0 / 1177500 = 0.0 % 0 
+uplink 117 0 / 1807500 = 0.0 % 0 
+downlink 117 0 / 1807500 = 0.0 % 0 
+uplink 118 0 / 1230000 = 0.0 % 0 
+downlink 118 0 / 1230000 = 0.0 % 0 
+uplink 119 0 / 1795500 = 0.0 % 0 
+downlink 119 0 / 1797000 = 0.0 % 0 
+uplink 120 0 / 1792500 = 0.0 % 0 
+downlink 120 0 / 1791000 = 0.0 % 0 
+uplink 121 0 / 1660500 = 0.0 % 0 
+downlink 121 0 / 1660500 = 0.0 % 0 
+uplink 122 0 / 1320000 = 0.0 % 0 
+downlink 122 0 / 1320000 = 0.0 % 0 
+uplink 123 0 / 1329000 = 0.0 % 0 
+downlink 123 0 / 1330500 = 0.0 % 0 
+uplink 124 0 / 1320000 = 0.0 % 0 
+downlink 124 0 / 1318500 = 0.0 % 0 
+uplink 125 0 / 1318500 = 0.0 % 0 
+downlink 125 0 / 1318500 = 0.0 % 0 
+uplink 126 0 / 1365000 = 0.0 % 0 
+downlink 126 0 / 1366500 = 0.0 % 0 
+uplink 127 0 / 1357500 = 0.0 % 0 
+downlink 127 0 / 1356000 = 0.0 % 0 
+uplink 128 0 / 1354500 = 0.0 % 0 
+downlink 128 0 / 1354500 = 0.0 % 0 
+uplink 129 0 / 1366500 = 0.0 % 0 
+downlink 129 0 / 1366500 = 0.0 % 0 
+uplink 130 0 / 1377000 = 0.0 % 0 
+downlink 130 0 / 1377000 = 0.0 % 0 
+uplink 131 0 / 1299000 = 0.0 % 0 
+downlink 131 0 / 1299000 = 0.0 % 0 
+uplink 132 0 / 643500 = 0.0 % 0 
+downlink 132 0 / 643500 = 0.0 % 0 
+uplink 133 0 / 621000 = 0.0 % 0 
+downlink 133 0 / 621000 = 0.0 % 0 
+uplink 134 0 / 621000 = 0.0 % 0 
+downlink 134 0 / 621000 = 0.0 % 0 
+uplink 135 0 / 526500 = 0.0 % 0 
+downlink 135 0 / 526500 = 0.0 % 0 
+uplink 136 0 / 693000 = 0.0 % 0 
+downlink 136 0 / 694500 = 0.0 % 0 
+uplink 137 0 / 976500 = 0.0 % 0 
+downlink 137 0 / 975000 = 0.0 % 0 
+uplink 138 0 / 991500 = 0.0 % 0 
+downlink 138 0 / 991500 = 0.0 % 0 
+downlink 139 0 / 1062000 = 0.0 % 0 
+uplink 139 0 / 1062000 = 0.0 % 0 
+uplink 140 0 / 1089000 = 0.0 % 0 
+downlink 140 0 / 1089000 = 0.0 % 0 
+uplink 141 0 / 1116000 = 0.0 % 0 
+downlink 141 0 / 1116000 = 0.0 % 0 
+uplink 142 0 / 1291500 = 0.0 % 0 
+downlink 142 0 / 1291500 = 0.0 % 0 
+uplink 143 0 / 1399500 = 0.0 % 0 
+downlink 143 0 / 1401000 = 0.0 % 0 
 uplink 144 0 / 1375500 = 0.0 % 0 
-downlink 144 0 / 1375500 = 0.0 % 0 
+downlink 144 0 / 1374000 = 0.0 % 0 
 uplink 145 0 / 1392000 = 0.0 % 0 
 downlink 145 0 / 1392000 = 0.0 % 0 
 uplink 146 0 / 1509000 = 0.0 % 0 
 downlink 146 0 / 1509000 = 0.0 % 0 
-uplink 147 0 / 1879500 = 0.0 % 0 
-downlink 147 0 / 1879500 = 0.0 % 0 
-uplink 148 0 / 2049000 = 0.0 % 0 
-downlink 148 0 / 2049000 = 0.0 % 0 
-uplink 149 0 / 2055000 = 0.0 % 0 
-downlink 149 0 / 2055000 = 0.0 % 0 
-uplink 150 0 / 2050500 = 0.0 % 0 
-downlink 150 0 / 2050500 = 0.0 % 0 
+uplink 147 0 / 1804500 = 0.0 % 0 
+downlink 147 0 / 1804500 = 0.0 % 0 
+uplink 148 0 / 2053500 = 0.0 % 0 
+downlink 148 0 / 2055000 = 0.0 % 0 
+uplink 149 0 / 2049000 = 0.0 % 0 
+downlink 149 0 / 2047500 = 0.0 % 0 
+uplink 150 0 / 2049000 = 0.0 % 0 
+downlink 150 0 / 2049000 = 0.0 % 0 
