@@ -15,6 +15,19 @@ Buffering out of order packets:
   * If sender did not recieve ack within timeout window, it will re-send the packets.
 
 
+Congestion mechanisms:
+1. Slow start:
+  * The initial `ssthresh` is set to `64` segments.
+  * During slow start, the `window_size` doubles each time a full window has been `acked`
+  * Slow start continues until the `window_size` reaches `ssthresh` at which point we move to congestion avoidance
+2. Congestion avoidance:
+  * In this phase, `window_size` will increase by 1 each time a full window has been `acked`
+3. Fast retransmit:
+  * If the sender receives 3 `duplicate_ack` then `ssthresh` is set to half the `window_size` and window size is set to 1.
+
+
+
+
 ---
 How to run mininet.
 
