@@ -32,7 +32,7 @@
      struct sockaddr_in clientaddr; /* client addr */
      int optval; /* flag value for setsockopt */
      FILE *fp; /* fp of file to write to */
-     char buffer[MSS_SIZE];
+     char buffer[MSS_SIZE]; /*buffer of maximum segment size*/
      struct timeval tp;
 
      if (argc != 3) {
