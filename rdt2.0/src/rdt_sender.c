@@ -222,7 +222,7 @@ int main (int argc, char **argv) {
          (struct sockaddr *) &serveraddr, (socklen_t *)&serverlen) < 0){
       error("recvfrom");
   	 }
-    stop_timer();
+
 		recvpkt = (tcp_packet *)buffer; //Cast the read data into packet format
 		int ackno = recvpkt->hdr.ackno;
 
@@ -232,6 +232,7 @@ int main (int argc, char **argv) {
     VLOG(DEBUG, "%llu, %f, %f", time, window_size, ssthresh);
 
 		if (ackno > send_base){ //Cumulative recieved
+      stop_timer();
       duplicate_ack=0; //It was not duplicate
       /* Transmit new packets between our old head and updated head*/
       /* In slow start, window size increase 1 per segment acked */
