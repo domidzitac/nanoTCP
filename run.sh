@@ -7,7 +7,7 @@ time=150
 dir=output
 name=projectTest
 trace=DL_2_16Mbps
-loss=0.01
+loss=0.001
 
 # project2 TCP
 python run.py -tr $trace -t $time --name $name --dir $dir --loss $loss

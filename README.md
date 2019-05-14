@@ -1,12 +1,19 @@
 # TCP-Jia-Komiljon
-A open-source TCP/IP implementation in C. Simulated using mininet
+TCP/IP implementation in C. Simulated using Mininet.
 
-Current functionality:
-  * Sending packets based on a fixed sending window size (WND size 10)
-  * Reciever sending cumulative acks to server.
-  * Moving the sending window and transmitting new packets on the sender
-  * Buffering out of order packets on the reciever end.
-  * Timeout mechanism on the server to re-send packets
+Base features:
+  * The sender sends packets based on a window.
+  * The receiver sending cumulative acks to server.
+  * When a sent packet is `acked`, the window slides and a new packet is transmitted from the sender.
+  * All reading and writing operations are done directly to file using `fseek`
+
+Buffering out of order packets:
+
+  * If the receiver receives an out of packet, the packet is buffered by writing to the location in disk.
+  * A circular array is used to track the packets that have been acked.
+  * On arrival of a new packet, if it completes a buffered sequence, then send cumulative ack.
+  * If sender did not recieve ack within timeout window, it will re-send the packets.
+
 
 ---
 How to run mininet.
